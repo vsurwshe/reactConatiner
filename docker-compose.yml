@@ -1,0 +1,15 @@
+version: '3.0'
+services:
+  react: 
+    container_name: react-app
+    image: react-app
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+      - 7003:80
+    networks:
+      - reactnet 
+
+networks: 
+  reactnet:
