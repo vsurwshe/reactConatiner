@@ -4,6 +4,7 @@
 /hotel/node_modules
 /.pnp
 .pnp.js
+/hotel/package-lock.json
 
 # testing
 /coverage
