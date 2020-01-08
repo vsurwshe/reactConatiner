@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Routes from "./App/data/Routes";
+import Routes from "./App/config/Routes";
 import withTracker from "./AppData/withTracker";
 
 import "./AppData/css/bootstrap.min.css"
