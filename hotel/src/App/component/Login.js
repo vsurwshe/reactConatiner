@@ -1,7 +1,7 @@
-import React, {useState }from 'react';
+import React from 'react';
 
-Login =(props)=>{
-    return <H1>This is Login Component</H1>
+const Login =(props)=>{
+    return <h1>This is Login Component</h1>
 }
 
 export default Login;

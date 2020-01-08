@@ -1,7 +1,7 @@
-import React, {useState }from 'react';
+import React from 'react';
 
-Singup =(props)=>{
-    return <H1>This is Singup Component</H1>
+const Singup =(props)=>{
+    return <h1>This is Singup Component</h1>
 }
 
 export default Singup;

@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './AppData/css/index.css';
 import * as serviceWorker from './AppData/serviceWorker';
-import Main from './App/component/Main';
+import App from './App';
 
 ReactDOM.render(
-<Main />
+<App />
 , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
