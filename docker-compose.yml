@@ -1,8 +1,8 @@
 version: '3.0'
 services:
-  react: 
+  react:
+    image: react-app:latest 
     container_name: react-app
-    image: react-app
     build: 
       context: .
       dockerfile: Dockerfile
