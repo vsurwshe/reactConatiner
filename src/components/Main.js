@@ -1,11 +1,40 @@
 import React,{Component} from 'react'
+import { Container, Row, Col} from "react-bootstrap";
+import { connect } from "react-redux";
 import PaymentDatatable from './PaymentDataTabel';
+import Login, { isLogin } from './Login';
+
+import * as actionsCre from "../action/index";
 
 class Main extends Component {
+    // This is login form Loading
+  loadLogin = () => {
+    return <Login />
+  }
+
+   // This is loading main Dashborad Sturctres
+   loadSecureFramework = () => {
+    return <Container className="justify-content-md-center">
+      {/* <Row><Col><NavBar /></Col></Row> */}
+      {/* <Row><Col><Routes /></Col></Row> */}
+      <Row></Row>
+      <Row><PaymentDatatable /></Row>
+    </Container>
+  };
     
     render() { 
-        return <PaymentDatatable />
+         // This condtions checking is user login or not using props
+    if (isLogin(this.props)) {
+        return this.loadSecureFramework();
+      } else {
+        return this.loadLogin();
+      }
+        
     }
 }
+
+// This is line maping state const variable 
+const mapStateToProps = state => { return state; };
  
-export default Main;
+// This line passing above maping state to Main Class
+export default connect(mapStateToProps, actionsCre)(Main);

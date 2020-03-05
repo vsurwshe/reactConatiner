@@ -1,29 +1,28 @@
 import axios from "axios"
 
-const API_URL = "http://vanyzuulapigateway.herokuapp.com"
+const API_URL = "http://10.10.10.15:7000"
 
 // ------------------ This is dispath Actions Call any Component
 //  1) Load Token
 export function loadToken(userData) {
     return (dispatch) => {
-        return axios.post(API_URL + "/oauth/token", {
-            username: userData.username,
-            password: userData.password
+        return axios.post(API_URL + "/auth/user/token", {
+            userEmail: userData.username,
+            userPassword: userData.password
         })
             .then(response => {
                 dispatch(loadMessage('success', 'Login Successfull'))
                 dispatch(saveToken(response.data))
             })
             .catch(err => {
-                console.table("Error : ", typeof err);
                 dispatch(loadMessage('danger', 'Sorry you are not provied vaild credtional'));
             })
     }
 }
 // 2) Get user
-export function loadUser(token) {
+export function loadPayments(token) {
     return (dispatch) => {
-        return axios.get(API_URL + "/hotel-api/api/Htable", {
+        return axios.get(API_URL + "/profile/payment/getAll", {
             headers: {
                 'Authorization': 'Bearer ' + token
             }
