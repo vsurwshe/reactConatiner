@@ -1,9 +1,10 @@
-import React from 'react'
+import React,{Component} from 'react'
+import PaymentDatatable from './PaymentDataTabel';
 
-class Main extends React.Component {
+class Main extends Component {
     
     render() { 
-        return <h1> Hi FG</h1>
+        return <PaymentDatatable />
     }
 }
  
