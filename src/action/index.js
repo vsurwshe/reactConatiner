@@ -9,14 +9,12 @@ export function loadToken(userData) {
         return axios.post(API_URL + "/auth/user/token", {
             userEmail: userData.username,
             userPassword: userData.password
-        })
-            .then(response => {
+        }).then(response => {
                 dispatch(loadMessage('success', 'Login Successfull'))
                 dispatch(saveToken(response.data))
-            })
-            .catch(err => {
+        }).catch(err => {
                 dispatch(loadMessage('danger', 'Sorry you are not provied vaild credtional'));
-            })
+        })
     }
 }
 // 2) Get user
@@ -26,8 +24,7 @@ export function loadPayments(token) {
             headers: {
                 'Authorization': 'Bearer ' + token
             }
-        }).then(
-            response => {
+        }).then(response => {
                 dispatch(saveUser(response.data));
             }).catch(err => {
                 console.log("Error : ", err);
