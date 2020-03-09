@@ -20,12 +20,12 @@ export function loadToken(userData) {
 // 2) Get user
 export function loadPayments(token) {
     return (dispatch) => {
-        return axios.get(API_URL + "/profile/payment/getAll", {
+        return axios.get(API_URL + "/user/profile/payment/getAll", {
             headers: {
                 'Authorization': 'Bearer ' + token
             }
         }).then(response => {
-                dispatch(saveUser(response.data));
+            response.data && dispatch(savePayments(response.data));
             }).catch(err => {
                 console.log("Error : ", err);
             })
@@ -97,6 +97,14 @@ export function saveUser(data) {
     return {
         type: "SAVE_USER",
         userData: data
+    }
+}
+
+// This functions Save User
+export function savePayments(data) {
+    return {
+        type: "SAVE_PAYMENTS",
+        payments: data
     }
 }
 // This is Save Food 

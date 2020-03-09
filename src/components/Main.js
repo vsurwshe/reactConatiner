@@ -1,12 +1,15 @@
 import React,{Component} from 'react'
-import { Container, Row, Col} from "react-bootstrap";
+import { Container, Row} from "react-bootstrap";
 import { connect } from "react-redux";
 import PaymentDatatable from './PaymentDataTabel';
 import Login, { isLogin } from './Login';
 
 import * as actionsCre from "../action/index";
+import HeaderPart from './Helper/Header';
 
 class Main extends Component {
+
+
     // This is login form Loading
   loadLogin = () => {
     return <Login />
@@ -15,13 +18,20 @@ class Main extends Component {
    // This is loading main Dashborad Sturctres
    loadSecureFramework = () => {
     return <Container className="justify-content-md-center">
-      {/* <Row><Col><NavBar /></Col></Row> */}
-      {/* <Row><Col><Routes /></Col></Row> */}
-      <Row></Row>
-      <Row><PaymentDatatable /></Row>
+      <Row>
+        <HeaderPart />
+      </Row>
+      <Row>
+        {this.loadPayment()}
+        <PaymentDatatable />
+      </Row>
     </Container>
   };
-    
+  
+  loadPayment=()=>{
+    this.props.token && this.props.loadPayments(this.props.token);
+  }
+
     render() { 
          // This condtions checking is user login or not using props
     if (isLogin(this.props)) {

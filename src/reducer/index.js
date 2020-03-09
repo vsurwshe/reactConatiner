@@ -3,7 +3,8 @@ const INITIAL_STATE = {
     userData: [],
     foodData: [],
     color: '',
-    message: ''
+    message: '',
+    payments: []
 };
 
 
@@ -29,6 +30,11 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 color: action.color,
                 message: action.message
+            };
+        case "SAVE_PAYMENTS":
+            return {
+                ...state,
+                payments: action.payments
             };
 
         default: return state;

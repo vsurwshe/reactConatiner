@@ -5,6 +5,8 @@
   "dependencies": {
     "availity-reactstrap-validation": "^2.6.1",
     "bootstrap": "^4.4.1",
+    "datatables.net": "^1.10.20",
+    "jquery": "^3.4.1",
     "react": "^16.9.0",
     "react-bootstrap": "^1.0.0-beta.17",
     "react-dom": "^16.9.0",
