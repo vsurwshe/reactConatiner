@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Container, Row, Card } from "react-bootstrap";
-import HeaderPart from './Helper/Header';
-import FooterPart from './Helper/Footer';
 import { CardBody } from 'reactstrap';
+import { PreLoder, Navigation } from './Helper/ComponentPage';
+import HeaderPart from './Helper/Header';
 
 class Main extends Component {
 
@@ -12,17 +12,11 @@ class Main extends Component {
 
   // This is loading main Dashborad Sturctres
   loadSecureFramework = () => {
-    return <Container className="justify-content-md-center">
-      <Row>
-        <HeaderPart />
-      </Row>
-      <Row>
-        {this.loadBody()}
-      </Row>
-      <Row>
-        <FooterPart />
-      </Row>
-    </Container>
+    return <>
+    {/* <PreLoder /> */}
+    <Navigation />
+    <HeaderPart />
+    </>
   };
 
   loadBody = () => <Container className="justify-content-md-center">
