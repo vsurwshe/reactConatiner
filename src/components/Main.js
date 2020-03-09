@@ -1,50 +1,39 @@
-import React,{Component} from 'react'
-import { Container, Row} from "react-bootstrap";
-import { connect } from "react-redux";
-import PaymentDatatable from './PaymentDataTabel';
-import Login, { isLogin } from './Login';
-
-import * as actionsCre from "../action/index";
+import React, { Component } from 'react'
+import { Container, Row, Card } from "react-bootstrap";
 import HeaderPart from './Helper/Header';
+import FooterPart from './Helper/Footer';
+import { CardBody } from 'reactstrap';
 
 class Main extends Component {
 
-
-    // This is login form Loading
-  loadLogin = () => {
-    return <Login />
+  render() {
+    return this.loadSecureFramework();
   }
 
-   // This is loading main Dashborad Sturctres
-   loadSecureFramework = () => {
+  // This is loading main Dashborad Sturctres
+  loadSecureFramework = () => {
     return <Container className="justify-content-md-center">
       <Row>
         <HeaderPart />
       </Row>
       <Row>
-        {this.loadPayment()}
-        <PaymentDatatable />
+        {this.loadBody()}
+      </Row>
+      <Row>
+        <FooterPart />
       </Row>
     </Container>
   };
-  
-  loadPayment=()=>{
-    this.props.token && this.props.loadPayments(this.props.token);
-  }
 
-    render() { 
-         // This condtions checking is user login or not using props
-    if (isLogin(this.props)) {
-        return this.loadSecureFramework();
-      } else {
-        return this.loadLogin();
-      }
-        
-    }
+  loadBody = () => <Container className="justify-content-md-center">
+    <Card>
+      <CardBody className="card-align">
+        <center>
+          <h3>Welcome to V & Y Soft. Tech. Pvt. Ltd.</h3>
+        </center>
+      </CardBody>
+    </Card>
+  </Container>
 }
 
-// This is line maping state const variable 
-const mapStateToProps = state => { return state; };
- 
-// This line passing above maping state to Main Class
-export default connect(mapStateToProps, actionsCre)(Main);
+export default Main;
