@@ -46,6 +46,9 @@ export const Navigation=()=> {return <nav className="navbar navbar-expand-lg nav
             <li className="nav-item">
                 <a className="nav-link page-scroll" href="#pricing">PRICING</a>
             </li>
+            <li className="nav-item">
+                <a className="nav-link page-scroll" href="#footer">CONTACT US</a>
+            </li>
         </ul>
         {/* <span className="nav-item">
             <a className="btn-outline-sm" href="log-in.html">LOG IN</a>
