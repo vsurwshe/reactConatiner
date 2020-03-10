@@ -9,7 +9,9 @@ import HeaderPart from './Helper/Header';
 
 class Main extends Component {
 
-
+  componentWillMount=()=>{
+    this.loadPayment();
+  }
     // This is login form Loading
   loadLogin = () => {
     return <Login />
@@ -22,19 +24,21 @@ class Main extends Component {
         <HeaderPart />
       </Row>
       <Row>
-        {this.loadPayment()}
         <PaymentDatatable />
       </Row>
     </Container>
   };
   
   loadPayment=()=>{
-    this.props.token && this.props.loadPayments(this.props.token);
+    if(this.props.token && this.props.payments.length<=0){
+      this.props.loadPayments(this.props.token);
+    }
   }
 
     render() { 
          // This condtions checking is user login or not using props
     if (isLogin(this.props)) {
+        this.loadPayment();
         return this.loadSecureFramework();
       } else {
         return this.loadLogin();

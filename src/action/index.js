@@ -37,6 +37,7 @@ export function loadFood(token) {
     return (dispatch) => {
         return axios.get(API_URL + "/hotel-api/api/foodItem", {
             headers: {
+                'Content-Type': 'application/json', 
                 'Authorization': 'Bearer ' + token
             }
         }).then(
@@ -89,7 +90,7 @@ export function deleteFoodData(token, delData) {
 export function saveToken(token) {
     return {
         type: "TOKEN_CHNAGE",
-        token: token
+        token: token.userToken
     }
 }
 // This functions Save User

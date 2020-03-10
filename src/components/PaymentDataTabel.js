@@ -15,16 +15,17 @@ const PaymentDatatable=(props)=>{
 const loadDataTable = (props) => {
     // This array collection of header in DataTable
     let columns = [
-      { title: '', visible: false },
-      { title: "Due Date" },
-      { title: "Bill Date" },
-      { title: "Description" },
-      { title: '', orderable: false },// This column used for showing currency icon
-      { title: "Bill Amount" },
-      { title: "Status" },
-      { title: "", orderable: false }, // This column used for recuring bill icons
-      { title: "", orderable: false }, // This column used for edit button
-      { title: "", orderable: false } // This column used for more options
+      // { title: '', visible: false },
+      { title: "Payment Id" },
+      { title: "Modes" },
+      { title: "Transcations Dates" },
+      // { title: '', orderable: false },// This column used for showing currency icon
+      { title: "Transcation Ids" },
+      { title: "Amount" },
+      { title: "Verify" },
+      // { title: "", orderable: false }, // This column used for recuring bill icons
+      // { title: "", orderable: false }, // This column used for edit button
+      // { title: "", orderable: false } // This column used for more options
     ]
     // This is Returning DataTable Component
     return <Card>
@@ -41,12 +42,21 @@ const loadDataTable = (props) => {
 
    // This fucntion loading DataTable Rows.
    const loadTableRows = (props) => {
-    // var rows = bills.map((bill, key) => { return loadSingleRow(bill, key, featureAttachment); })
-    // return rows;
+    var rows = props.payments.length>0 && props.payments.map((payment, key) => { return loadSingleRow(payment); })
+    return rows;
   }
 
   // Show the Single Bill 
-  // const loadSingleRow = (props) => {
+  const loadSingleRow = (payment) => {
+    const {payId,mode,transctionsId,amount,tarnsDate,verify,user_id}=payment
+    let singleRow=[
+      ""+payId,
+      ""+mode,
+      ""+tarnsDate,
+      ""+transctionsId,
+      ""+amount,
+      ""+verify
+    ]
   //   // let strike = bill.paid;
   //   // let lastPaid = this.calculateLastPaid(bill, bill.amount);
   //   // let billDescription = bill.description ? bill.description.length > 25 ? bill.description.substring(0, 25) + "..." : bill.description : bill.categoryName.name;
@@ -62,8 +72,8 @@ const loadDataTable = (props) => {
   //     '',
   //     // this.loadDropDown(bill, key, featureAttachment)
   //   // ]
-  //   // return singleRow;
-  // }
+    return singleRow;
+  }
 
 
 const mapStateToProps = state => { return state; };

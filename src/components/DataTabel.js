@@ -45,22 +45,22 @@ export class DataTable extends Component {
                     "sLast": "Last"
                 }
             },
-            columnDefs: [
-                { targets: [3], width: "25%" },
-                { targets: [4], width: "8px" },
-                { targets: [1], width: "7%" },
-                { targets: [5], width: "9%" },
-                { targets: [2], width: "10%" },
-                { targets: [6], width: "25%" }, // reduced width And fixed padding/marigin Top of edit button
-                { sType: "date", aTargets: [1, 2] }, // Sorting on Date format
+            // columnDefs: [
+            //     { targets: [3], width: "25%" },
+            //     { targets: [4], width: "8px" },
+            //     { targets: [1], width: "7%" },
+            //     { targets: [5], width: "9%" },
+            //     { targets: [2], width: "10%" },
+            //     { targets: [6], width: "25%" }, // reduced width And fixed padding/marigin Top of edit button
+            //     { sType: "date", aTargets: [1, 2] }, // Sorting on Date format
 
-                // Define a button in the datatable
-                {
-                    "targets": -2, // specifies the position of button(last but one) in the row
-                    "data": null,
-                    "defaultContent": "<button class='editButton' style='background-color: transparent; border-radius: 0.25em'>Edit</button>"
-                }
-            ],
+            //     // Define a button in the datatable
+            //     {
+            //         "targets": -2, // specifies the position of button(last but one) in the row
+            //         "data": null,
+            //         "defaultContent": "<button class='editButton' style='background-color: transparent; border-radius: 0.25em'>Edit</button>"
+            //     }
+            // ],
         })
     }
 
