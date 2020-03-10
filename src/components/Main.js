@@ -13,9 +13,8 @@ class Main extends Component {
     this.loadPayment();
   }
     // This is login form Loading
-  loadLogin = () => {
-    return <Login />
-  }
+  loadLogin = () => <Login />
+  
 
    // This is loading main Dashborad Sturctres
    loadSecureFramework = () => {

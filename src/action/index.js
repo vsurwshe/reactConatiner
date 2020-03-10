@@ -1,6 +1,6 @@
 import axios from "axios"
-
-const API_URL = "http://10.10.10.15:7000"
+const { apiUrl } = window['runConfig'];
+const API_URL = apiUrl;
 
 // ------------------ This is dispath Actions Call any Component
 //  1) Load Token

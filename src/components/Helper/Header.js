@@ -9,7 +9,7 @@ const HeaderPart=(props)=>{
       <CardBody className="card-align">
       <center>
         <h3>Welcome to V & Y Soft. Tech. Pvt. Ltd.</h3>
-    </center>
+      </center>
       </CardBody>
     </Card>
   </Container>

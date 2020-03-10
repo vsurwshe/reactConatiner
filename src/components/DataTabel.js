@@ -28,7 +28,7 @@ export class DataTable extends Component {
         }
         this.$el.DataTable({
             retrieve: true,
-            data: this.props.billData, // This is the billData provided to show in data Table
+            data: this.props.data, // This is the billData provided to show in data Table
             columns: this.props.columns, // This is list of column names provided to display in data Table
             "deferRender": true,
             /* 2nd sub-array defines the values to be displayed in select(entries) to the user
