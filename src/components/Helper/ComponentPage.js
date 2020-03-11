@@ -120,12 +120,12 @@ export const Desription = () => <div id="description" className="cards-1">
 const FeaturesCard = [
     {
         featureImagePath: "images/features-1.png",
-        featureName: "List Building Is Easier Than Ever",
-        featureInfo: "It's very easy to start using Tivo. You just need to fill out and submit the <a className='blue page-scroll' href='sign-up.html'>Sign Up Form</a> and you will receive access to the app and all of its features in no more than 24h.",
+        featureName: "Tabel Management",
+        featureInfo: "Using these facilities you can manage your hotel or restaurant tables easily and simply. You can see the daily which tables are busy and you can reservations those tables for specific customers.",
         featureList: [
-            "Create and embed on websites newsletter sign up forms",
-            "Manage forms and landing pages for your services",
-            "Add and remove subscribers using the control panel"
+            "Manage the tables and their bills.",
+            "Reversions of customer tables.",
+            "A daily report generation of the tables."
         ]
     },
     {
@@ -170,7 +170,7 @@ export const Features = () => <div id="features" className="tabs">
                 {/* <!-- Tabs Links --> */}
                 <ul className="nav nav-tabs" id="argoTabs" role="tablist">
                     <li className="nav-item">
-                        <a className="nav-link active" id="nav-tab-1" data-toggle="tab" href="#tab-0" role="tab" aria-controls="tab-0" aria-selected="true"><i className="fas fa-list"></i>List Builder</a>
+                        <a className="nav-link active" id="nav-tab-1" data-toggle="tab" href="#tab-0" role="tab" aria-controls="tab-0" aria-selected="true"><i className="fas fa-list"></i>Tabel Management</a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" id="nav-tab-2" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="false"><i className="fas fa-envelope-open-text"></i>Campaigns</a>
