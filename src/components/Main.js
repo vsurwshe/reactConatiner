@@ -16,12 +16,13 @@ class Main extends Component {
   // This is loading main Dashborad Sturctres
   loadSecureFramework = () => {
     return <>
-    {/* <PreLoder /> */}
+    <PreLoder />
     <Navigation />
     <HeaderPart />
-    <Desription />
+    <Details />
+    {/* <Desription /> */}
     <Features />
-    {/* <Details /> */}
+  
     {/* <LightBox /> */}
     <Pricing />
     <FooterPart />

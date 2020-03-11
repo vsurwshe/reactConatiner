@@ -7,8 +7,8 @@ const HeaderPart=()=><><header id="header" className="header">
         <div className="row">
             <div className="col-lg-6 col-xl-5">
                 <div className="text-container">
-                    <h1>Hotel Desktop Managment Application</h1>
-                    <p className="p-large">We develope the standalone desktop application with cloud based technology supporting. </p>
+                    <h1>Hotel Managment Desktop Application</h1>
+                    <p className="p-large">This product encourages the simple and bother free administration of lodging activities and capacities in a financially savvy way, remembering to ease. </p>
                     <a className="btn-solid-lg page-scroll"  href={softwarePath} download>Download now</a>
                 </div> 
                 {/* <!-- end of text-container --> */}
