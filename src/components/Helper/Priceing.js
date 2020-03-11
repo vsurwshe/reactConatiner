@@ -56,8 +56,8 @@ const Pricing = () => <div id="pricing" className="cards-2">
         <div className="row">
             <div className="col-lg-12">
                 {
-                    PriceTable.map((price) => {
-                        return <div className="card">
+                    PriceTable.map((price, key) => {
+                        return <div className="card" key={key}>
                             <div className="card-body">
                                 <div className="card-title">{price.CardTitle}</div>
                                 <div className="price"><span className="currency">{price.currency}</span><span className="value">{price.type}</span></div>

@@ -26,10 +26,10 @@ export const Navigation=()=> {return <nav className="navbar navbar-expand-lg nav
                 <a className="nav-link page-scroll" href="#header">HOME <span className="sr-only">(current)</span></a>
             </li>
             <li className="nav-item">
-                <a className="nav-link page-scroll" href="#features">FEATURES</a>
+                <a className="nav-link page-scroll" href="#description">DETAILS</a>
             </li>
             <li className="nav-item">
-                <a className="nav-link page-scroll" href="#details">DETAILS</a>
+                <a className="nav-link page-scroll" href="#features">FEATURES</a>
             </li>
             {/* <!-- Dropdown Menu -->           */}
             {/* <li className="nav-item dropdown">
@@ -58,7 +58,7 @@ export const Navigation=()=> {return <nav className="navbar navbar-expand-lg nav
 </nav>}
 
 
-export const Desription=()=><div className="cards-1">
+export const Desription=()=><div id="description" className="cards-1">
 <div className="container">
     <div className="row">
         <div className="col-lg-12">
@@ -278,43 +278,43 @@ export const Features=()=> <div id="features" className="tabs">
 
 
 
-export const LightBox=()=><div id="details-lightbox-1" class="lightbox-basic zoom-anim-dialog mfp-hide">
-<div class="container">
-    <div class="row">
-        <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
-        <div class="col-lg-8">
-            <div class="image-container">
-                <img class="img-fluid" src="images/details-lightbox.png" alt="alternative" />
+export const LightBox=()=><div id="details-lightbox-1" className="lightbox-basic zoom-anim-dialog mfp-hide">
+<div className="container">
+    <div className="row">
+        <button title="Close (Esc)" type="button" className="mfp-close x-button">×</button>
+        <div className="col-lg-8">
+            <div className="image-container">
+                <img className="img-fluid" src="images/details-lightbox.png" alt="alternative" />
             </div>
              {/* <!-- end of image-container --> */}
         </div> 
         {/* <!-- end of col --> */}
-        <div class="col-lg-4">
+        <div className="col-lg-4">
             <h3>List Building</h3>
             <hr/>
             <h5>Core service</h5>
             <p>It's very easy to start using Tivo. You just need to fill out and submit the Sign Up Form and you will receive access to the app.</p>
-            <ul class="list-unstyled li-space-lg">
-                <li class="media">
-                    <i class="fas fa-square"></i><div class="media-body">List building framework</div>
+            <ul className="list-unstyled li-space-lg">
+                <li className="media">
+                    <i className="fas fa-square"></i><div className="media-body">List building framework</div>
                 </li>
-                <li class="media">
-                    <i class="fas fa-square"></i><div class="media-body">Easy database browsing</div>
+                <li className="media">
+                    <i className="fas fa-square"></i><div className="media-body">Easy database browsing</div>
                 </li>
-                <li class="media">
-                    <i class="fas fa-square"></i><div class="media-body">User administration</div>
+                <li className="media">
+                    <i className="fas fa-square"></i><div className="media-body">User administration</div>
                 </li>
-                <li class="media">
-                    <i class="fas fa-square"></i><div class="media-body">Automate user signup</div>
+                <li className="media">
+                    <i className="fas fa-square"></i><div className="media-body">Automate user signup</div>
                 </li>
-                <li class="media">
-                    <i class="fas fa-square"></i><div class="media-body">Quick formatting tools</div>
+                <li className="media">
+                    <i className="fas fa-square"></i><div className="media-body">Quick formatting tools</div>
                 </li>
-                <li class="media">
-                    <i class="fas fa-square"></i><div class="media-body">Fast email checking</div>
+                <li className="media">
+                    <i className="fas fa-square"></i><div className="media-body">Fast email checking</div>
                 </li>
             </ul>
-            <a class="btn-solid-reg mfp-close" href="sign-up.html">SIGN UP</a> <a class="btn-outline-reg mfp-close as-button" href="#screenshots">BACK</a>
+            <a className="btn-solid-reg mfp-close" href="sign-up.html">SIGN UP</a> <a className="btn-outline-reg mfp-close as-button" href="#screenshots">BACK</a>
         </div> 
         {/* <!-- end of col --> */}
     </div>
@@ -324,31 +324,31 @@ export const LightBox=()=><div id="details-lightbox-1" class="lightbox-basic zoo
 </div>
 
 
-export const Details=()=><div id="details" class="basic-1">
-<div class="container">
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="text-container">
+export const Details=()=><div id="details" className="basic-1">
+<div className="container">
+    <div className="row">
+        <div className="col-lg-6">
+            <div className="text-container">
                 <h2>Now Is The Time To Upgrade Your Marketing Solution</h2>
                 <p>Target the right customers for your business with the help of Tivo's patented segmentation technology and deploy efficient marketing campaigns. Keep your customers happy and loyal.</p>
-                <ul class="list-unstyled li-space-lg">
-                    <li class="media">
-                        <i class="fas fa-square"></i>
-                        <div class="media-body">Understand customers and meet their requirements</div>
+                <ul className="list-unstyled li-space-lg">
+                    <li className="media">
+                        <i className="fas fa-square"></i>
+                        <div className="media-body">Understand customers and meet their requirements</div>
                     </li>
-                    <li class="media">
-                        <i class="fas fa-square"></i>
-                        <div class="media-body">Targeted client base with Tivo's efficient technology</div>
+                    <li className="media">
+                        <i className="fas fa-square"></i>
+                        <div className="media-body">Targeted client base with Tivo's efficient technology</div>
                     </li>
                 </ul>
-                <a class="btn-solid-reg page-scroll" href="sign-up.html">SIGN UP</a>
+                <a className="btn-solid-reg page-scroll" href="sign-up.html">SIGN UP</a>
             </div> 
             {/* <!-- end of text-container --> */}
         </div>
         {/* </div><!-- end of col --> */}
-        <div class="col-lg-6">
-            <div class="image-container">
-                <img class="img-fluid" src="images/details.png" alt="alternative" />
+        <div className="col-lg-6">
+            <div className="image-container">
+                <img className="img-fluid" src="images/details.png" alt="alternative" />
             </div>
              {/* <!-- end of image-container --> */}
         </div>

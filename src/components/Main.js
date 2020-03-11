@@ -21,7 +21,7 @@ class Main extends Component {
     <HeaderPart />
     <Desription />
     <Features />
-    <Details />
+    {/* <Details /> */}
     {/* <LightBox /> */}
     <Pricing />
     <FooterPart />
