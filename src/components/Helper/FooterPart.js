@@ -1,6 +1,4 @@
 import React from 'react'
-import { Card, CardBody } from 'reactstrap';
-import { Container } from 'react-bootstrap';
 
 const FooterPart = (props) => {
     return <header id="footer" className="ex-header">

@@ -185,7 +185,7 @@ export const Features = () => <div id="features" className="tabs">
                 <div className="tab-content" id="argoTabsContent">
                     {
                         FeaturesCard.length >= 0 && FeaturesCard.map((feature, key) => {
-                            return <div className={key=== 0 ?"tab-pane fade show active" :"tab-pane fade"} id={"tab-" + key} role="tabpanel" aria-labelledby={"tab-" + key} key={key}>
+                            return <div className={key === 0 ? "tab-pane fade show active" : "tab-pane fade"} id={"tab-" + key} role="tabpanel" aria-labelledby={"tab-" + key} key={key}>
                                 <div className="row">
                                     <div className="col-lg-6">
                                         <div className="image-container">
@@ -199,11 +199,9 @@ export const Features = () => <div id="features" className="tabs">
                                             <h3>{feature.featureName}</h3>
                                             <p>{feature.featureInfo}</p>
                                             <ul className="list-unstyled li-space-lg">
-                                                   
-                                                    { feature.featureList.length > 0 && feature.featureList.map((subFeatuer, key) => {
-                                                            return  <li className="media"> <i className="fas fa-square"></i><div className="media-body" key={key}>{subFeatuer}</div> </li>
-                                                        })
-                                                    }
+                                                {feature.featureList.length > 0 && feature.featureList.map((subFeatuer, key) => {
+                                                    return <li className="media"> <i className="fas fa-square"></i><div className="media-body" key={key}>{subFeatuer}</div> </li>
+                                                })}
                                             </ul>
                                         </div>
                                         {/* <!-- end of text-container --> */}
@@ -212,97 +210,11 @@ export const Features = () => <div id="features" className="tabs">
                                 </div>
                                 {/* <!-- end of row --> */}
                             </div>
-                            {/* <!-- end of tab-pane --> */ }
-                            {/* <!-- end of tab --> */ }
                         })
                     }
-
-
-
-
-
-                    {/* <!-- Tab --> */}
-                    {/* <div className="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="tab-2"> */}
-                    {/* <div className="row">
-                        <div className="col-lg-6">
-                            <div className="image-container">
-                                <img className="img-fluid" src="images/features-2.png" alt="alternative" />
-                            </div> */}
-                    {/* <!-- end of image-container --> */}
-                    {/* </div>  */}
-                    {/* <!-- end of col --> */}
-                    {/* <div className="col-lg-6">
-                            <div className="text-container">
-                                <h3>Campaigns Monitoring Tools</h3>
-                                <p>Campaigns monitoring is a feature we've developed since the beginning because it's at the core of Tivo and basically to any marketing activity focused on results.</p>
-                                <ul className="list-unstyled li-space-lg">
-                                    <li className="media">
-                                        <i className="fas fa-square"></i>
-                                        <div className="media-body">Easily plan campaigns and schedule their starting date</div>
-                                    </li>
-                                    <li className="media">
-                                        <i className="fas fa-square"></i>
-                                        <div className="media-body">Start campaigns and follow their evolution closely</div>
-                                    </li>
-                                    <li className="media">
-                                        <i className="fas fa-square"></i>
-                                        <div className="media-body">Evaluate campaign results and optimize future actions</div>
-                                    </li>
-                                </ul>
-                                <a className="btn-solid-reg popup-with-move-anim" href="#details-lightbox-2">LIGHTBOX</a>
-                            </div>  */}
-                    {/* <!-- end of text-container --> */}
-                    {/* </div> */}
-                    {/* <!-- end of col --> */}
-                    {/* </div>  */}
-                    {/* <!-- end of row --> */}
-                    {/* </div>  */}
-                    {/* <!-- end of tab-pane --> */}
-                    {/* <!-- end of tab --> */}
-
-                    {/* <!-- Tab --> */}
-                    {/* <div className="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="tab-3">
-                    <div className="row">
-                        <div className="col-lg-6">
-                            <div className="image-container">
-                                <img className="img-fluid" src="images/features-3.png" alt="alternative" />
-                            </div>  */}
-                    {/* <!-- end of image-container --> */}
-                    {/* </div>  */}
-                    {/* <!-- end of col --> */}
-                    {/* <div className="col-lg-6">
-                            <div className="text-container">
-                                <h3>Analytics Control Panel</h3>
-                                <p>Analytics control  panel is important for every marketing team so it's beed implemented from the begging and designed to produce reports based on very little input information.</p>
-                                <ul className="list-unstyled li-space-lg">
-                                    <li className="media">
-                                        <i className="fas fa-square"></i>
-                                        <div className="media-body">If you set it up correctly you will get acces to great intel</div>
-                                    </li>
-                                    <li className="media">
-                                        <i className="fas fa-square"></i>
-                                        <div className="media-body">Easy to integrate in your websites and landing pages</div>
-                                    </li>
-                                    <li className="media">
-                                        <i className="fas fa-square"></i>
-                                        <div className="media-body">The generated reports are important for your strategy</div>
-                                    </li>
-                                </ul>
-                                <a className="btn-solid-reg popup-with-move-anim" href="#details-lightbox-3">LIGHTBOX</a>
-                            </div>  */}
-                    {/* <!-- end of text-container --> */}
-                    {/* </div>  */}
-                    {/* <!-- end of col --> */}
-                    {/* </div>  */}
-                    {/* <!-- end of row --> */}
-                    {/* </div>  */}
-                    {/* <!-- end of tab-pane --> */}
-                    {/* <!-- end of tab --> */}
-
                 </div>
                 {/* <!-- end of tab content -->
             <!-- end of tabs content --> */}
-
             </div>
             {/* <!-- end of col --> */}
         </div>
