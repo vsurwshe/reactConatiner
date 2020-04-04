@@ -121,7 +121,7 @@ const FeaturesCard = [
     {
         featureImagePath: "images/features-1.png",
         featureName: "Tabel Management",
-        featureInfo: "Using these facilities you can manage your hotel or restaurant tables easily and simply. You can see the daily which tables are busy and you can reservations those tables for specific customers.",
+        featureInfo: "You can manage your hotel or restaurant tables easily and simply. You can see the daily which tables are busy and you can reservations those tables for specific customers.",
         featureList: [
             "Manage the tables and their bills.",
             "Reversions of customer tables.",
@@ -130,22 +130,22 @@ const FeaturesCard = [
     },
     {
         featureImagePath: "images/features-2.png",
-        featureName: "Campaigns Monitoring Tools",
-        featureInfo: "Campaigns monitoring is a feature we've developed since the beginning because it's at the core of Tivo and basically to any marketing activity focused on results.",
+        featureName: "Foods management",
+        featureInfo: "You can manage your hotel or restaurant food management with price and quantity while creating an invoice for the user table. Once you add the food, then you just need to select the food.",
         featureList: [
-            "Easily plan campaigns and schedule their starting date",
-            "Start campaigns and follow their evolution closely",
-            "Evaluate campaign results and optimize future actions"
+            "Add the food item easily with user understandable GUI",
+            "Modify the infomations easily",
+            "One click add the food informations"
         ]
     },
     {
         featureImagePath: "images/features-3.png",
-        featureName: "Analytics Control Panel",
-        featureInfo: "Analytics control  panel is important for every marketing team so it's beed implemented from the begging and designed to produce reports based on very little input information.",
+        featureName: "Customer Management",
+        featureInfo: "You can manage your hotel or restaurant customer data management with the name and other details while creating an invoice for the user table. Once you add the customer, then you just need to select the customer.",
         featureList: [
-            "If you set it up correctly you will get acces to great intel",
-            "Easy to integrate in your websites and landing pages",
-            "The generated reports are important for your strategy"
+            "Add the Customer with simple GUI Application",
+            "Select the customer details while creating the user invoice",
+            "Modify the customer details easily."
         ]
     }
 
@@ -173,14 +173,13 @@ export const Features = () => <div id="features" className="tabs">
                         <a className="nav-link active" id="nav-tab-1" data-toggle="tab" href="#tab-0" role="tab" aria-controls="tab-0" aria-selected="true"><i className="fas fa-list"></i>Tabel Management</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" id="nav-tab-2" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="false"><i className="fas fa-envelope-open-text"></i>Campaigns</a>
+                        <a className="nav-link" id="nav-tab-2" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="false"><i className="fas fa-envelope-open-text"></i>Foods management</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" id="nav-tab-3" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false"><i className="fas fa-chart-bar"></i>Analytics</a>
+                        <a className="nav-link" id="nav-tab-3" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false"><i className="fas fa-chart-bar"></i>Customer Management</a>
                     </li>
                 </ul>
                 {/* <!-- end of tabs links --> */}
-
                 {/* <!-- Tabs Content --> */}
                 <div className="tab-content" id="argoTabsContent">
                     {
@@ -200,7 +199,7 @@ export const Features = () => <div id="features" className="tabs">
                                             <p>{feature.featureInfo}</p>
                                             <ul className="list-unstyled li-space-lg">
                                                 {feature.featureList.length > 0 && feature.featureList.map((subFeatuer, key) => {
-                                                    return <li className="media"> <i className="fas fa-square"></i><div className="media-body" key={key}>{subFeatuer}</div> </li>
+                                                    return <li className="media" key={key}> <i className="fas fa-square"></i><div className="media-body" key={key}>{subFeatuer}</div> </li>
                                                 })}
                                             </ul>
                                         </div>

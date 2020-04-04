@@ -4,40 +4,37 @@ const PriceTable = [
     {
         "CardTitle": "Free",
         "currency": "₹",
-        "type": "Free",
-        "frequency": "Unlimited",
+        "type": "0.0/-",
+        "frequency": "Monthly",
         featuers: [
-            "Email Marketing Module",
-            "User Control Management",
-            "",// "List Building And Cleaning",
+            "Add up to 5 of customers data",
+            "Add up to 5 of food items data",
+            "Add up to 5 of tables data",// "List Building And Cleaning",
             "",// "Collected Data Reports",
-            ""// "Planning And Evaluation"
         ]
     },
     {
         "CardTitle": "BASIC",
         "currency": "₹",
-        "type": "90",
+        "type": "99.0/-",
         "frequency": "Monthly",
         featuers: [
-            "Email Marketing Module",
-            "User Control Management",
-            "List Building And Cleaning",
-            "",// "Collected Data Reports",
-            ""// "Planning And Evaluation"
+            "Add up to 100 of customers data",
+            "Add up to 100 of food items data",
+            "Add up to 100 of table data",
+            "You can take backup and restore your daily data",// "Collected Data Reports",
         ]
     },
     {
         "CardTitle": "PERMIUM",
         "currency": "₹",
-        "type": "145",
+        "type": "189.0/-",
         "frequency": "Monthly",
         featuers: [
-            "Email Marketing Module",
-            "User Control Management",
-            "List Building And Cleaning",
-            "Collected Data Reports",
-            "Planning And Evaluation"
+            "Add up to 400 of customers data",
+            "Add up to 400 of food items data",
+            "Add up to 400 of tables data",
+            "Automatic daily take your backup and restore daily data",
         ]
     }
 ]
@@ -65,8 +62,8 @@ const Pricing = () => <div id="pricing" className="cards-2">
                                 <div className="divider"></div>
                                 <ul className="list-unstyled li-space-lg">
                                     {
-                                        price.featuers.length > 0 && price.featuers.map((featuer) => {
-                                            return featuer === "" ? <div style={{padding:15}}></div> : <li className="media">
+                                        price.featuers.length > 0 && price.featuers.map((featuer,key) => {
+                                            return featuer === "" ? <div style={{padding:15}} key={key}></div> : <li className="media" key={key}>
                                                 <i className="fas fa-check"></i><div className="media-body">{featuer}</div>
                                             </li>
                                         })
