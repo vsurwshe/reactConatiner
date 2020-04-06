@@ -33,21 +33,35 @@ export function loadPayments(token) {
 }
 
 // 3) Get Food 
-export function loadFood(token) {
+export function loadUser() {
     return (dispatch) => {
-        return axios.get(API_URL + "/hotel-api/api/foodItem", {
+        return axios.get(API_URL + "/auth/user/getAll", {
             headers: {
                 'Content-Type': 'application/json', 
-                'Authorization': 'Bearer ' + token
             }
         }).then(
             response => {
-                dispatch(saveFood(response.data));
+                dispatch(saveUsers(response.data));
             }).catch(err => {
                 console.log("Error : ", err);
             })
     }
 }
+
+export function savePayementData(token, postData) {
+    var config = {
+        headers: { 'Authorization': 'Bearer ' + token }
+    };
+    return (dispatch) => {
+        return axios.post(API_URL + '/user/'+postData.userId+'/payment/save', postData, config)
+            .then(response => { 
+                dispatch(savePaymentResult(token)) 
+            })
+            .catch(err => { console.log("Error : ", err) })
+    }
+}
+
+
 // 4) Save Food
 export function saveFoodData(token, postData) {
     var config = {
@@ -56,7 +70,9 @@ export function saveFoodData(token, postData) {
 
     return (dispatch) => {
         return axios.post(API_URL + '/hotel-api/api/foodItem', postData, config)
-            .then(response => { dispatch(loadFood(token)) })
+            .then(response => { 
+                // dispatch(loadFood(token)) 
+            })
             .catch(err => { console.log("Error : ", err) })
     }
 }
@@ -67,7 +83,9 @@ export function updateFoodData(token, putData) {
     };
     return (dispatch) => {
         return axios.put(API_URL + '/hotel-api/api/foodItem/' + putData.foId, putData, config)
-            .then(response => { dispatch(loadFood(token)) })
+            .then(response => { 
+                // dispatch(loadFood(token)) 
+            })
             .catch(err => { console.log("Error : ", err) })
     }
 }
@@ -78,7 +96,9 @@ export function deleteFoodData(token, delData) {
     };
     return (dispatch) => {
         return axios.delete(API_URL + '/hotel-api/api/foodItem/' + delData.foId, config)
-            .then(response => { dispatch(loadFood(token)) })
+            .then(response => { 
+                // dispatch(loadFood(token)) 
+            })
             .catch(err => { console.log("Error : ", err) })
     }
 }
@@ -123,3 +143,17 @@ export function loadMessage(color, message) {
         message: message
     }
 } 
+
+export function saveUsers(users){
+ return {
+    type:"SAVE_USERS",
+    users:users
+ }
+}
+
+export function savePaymentResult(result){
+    return {
+       type:"SAVE_PAYMENT_RESULT",
+       payment_result:result
+    }
+   }

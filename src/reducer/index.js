@@ -4,7 +4,9 @@ const INITIAL_STATE = {
     foodData: [],
     color: '',
     message: '',
-    payments: []
+    payments: [],
+    users:[],
+    paymentResult:[]
 };
 
 
@@ -35,6 +37,16 @@ export default (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 payments: action.payments
+            };
+        case "SAVE_USERS":
+            return {
+                ...state,
+                users: action.users
+            };
+        case "SAVE_PAYMENT_RESULT":
+            return {
+                ...state,
+                paymentResult: action.payment_result
             };
 
         default: return state;
