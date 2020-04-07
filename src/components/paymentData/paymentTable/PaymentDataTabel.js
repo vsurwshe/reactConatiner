@@ -1,20 +1,36 @@
-import React from 'react';
+import React,{Component} from 'react';
 import { Card, Container } from "react-bootstrap";
 import { CardBody } from 'reactstrap';
 import { DataTable } from './DataTabel';
 import { connect } from 'react-redux';
+import PaymentModel from './PaymentModel';
 
 
 
-const PaymentDatatable = (props) => {
-  return <Container className="justify-content-md-center">
-    <center>{loadDataTable(props)}</center>
-  </Container>
-}
+class PaymentDatatable extends Component{
 
+  state={
+    showModal:false,
+    modalData:[]
+  }
 
-// This Functions Loading Jquery DataTable into bills
-const loadDataTable = (props) => {
+  toggle=(modalData)=>{
+    this.setState({showModal : !this.state.showModal,modalData})
+  }
+
+ verifyHandelClick=(props)=>{
+    this.toggle(props);
+  }
+  
+render(){
+  const {showModal,modalData}=this.state
+  return showModal ?  <PaymentModel showModel={showModal}  data={modalData} toggle={this.toggle}/> : <Container className="justify-content-md-center">
+  <center>{this.loadDataTable(this.props)}</center>
+</Container>
+ }
+
+ // This Functions Loading Jquery DataTable into bills
+loadDataTable = (props) => {
   // This array collection of header in DataTable
   let columns = [
     { title: '', visible: false },
@@ -30,23 +46,22 @@ const loadDataTable = (props) => {
   return <Card>
     <CardBody className="card-align">
       {/* Calling jquery datatable component providing rows and columns */}
-      {(props.payments.length > 0) ? <>
-        <DataTable data={loadTableRows(props)} columns={columns} /> </> : <DataTable columns={columns} />
+      {(this.props.payments.length > 0) ? <>
+        <DataTable data={this.loadTableRows(this.props)} columns={columns} handelClick={this.verifyHandelClick} /> </> : <DataTable columns={columns} />
       }
     </CardBody>
   </Card>
 
 }
 
-
 // This fucntion loading DataTable Rows.
-const loadTableRows = (props) => {
-  var rows = props.payments.length > 0 && props.payments.map((payment, key) => { return loadSingleRow(payment, key); })
+loadTableRows = (props) => {
+  var rows = props.payments.length > 0 && props.payments.map((payment, key) => { return this.loadSingleRow(payment, key); })
   return rows;
 }
 
-// Show the Single Bill 
-const loadSingleRow = (payment, key) => {
+ // Show the Single Bill 
+loadSingleRow = (payment, key) => {
   const { payId, mode, transctionsId, amount, tarnsDate, verify } = payment
   let singleRow = [
     "" + payId,
@@ -60,7 +75,7 @@ const loadSingleRow = (payment, key) => {
   ]
   return singleRow;
 }
-
+}
 
 const mapStateToProps = state => { return state; };
 

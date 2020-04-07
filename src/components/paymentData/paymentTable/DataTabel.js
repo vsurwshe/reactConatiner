@@ -57,8 +57,15 @@ export class DataTable extends Component {
                 // Define a button in the datatable
                 {
                     "targets": -2, // specifies the position of button(last but one) in the row
-                    "data": null,
-                    "defaultContent": "<button class='editButton' style='background-color: transparent; border-radius: 0.25em'>Edit</button>"
+                    "data": function(row, type, val, meta){
+                        return  row[6] === "No" ? "<button class='verifyButton' style='background-color: green; border-radius: 0.25em' >Verify</button>": ""
+                    },
+                    "createdCell":(td,cellData,rowData,row,col)=>{
+                        $(td).click(e=>{
+                            this.props.handelClick(rowData)
+                        })
+                    },
+                    // "defaultContent": "<button class='verifyButton' style='background-color: green; border-radius: 0.25em'>Verify</button>"
                 }
             ],
         })
