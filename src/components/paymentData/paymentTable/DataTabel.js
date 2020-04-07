@@ -58,7 +58,7 @@ export class DataTable extends Component {
                 {
                     "targets": -2, // specifies the position of button(last but one) in the row
                     "data": function(row, type, val, meta){
-                        return  row[6] === "No" ? "<button class='verifyButton' style='background-color: green; border-radius: 0.25em' >Verify</button>": ""
+                        return  row[6] === "No" ? "<button class='verifyButton' style='background-color: green; border-radius: 0.25em' >Verify</button>": "Verifed"
                     },
                     "createdCell":(td,cellData,rowData,row,col)=>{
                         $(td).click(e=>{

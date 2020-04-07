@@ -5,13 +5,16 @@ import { DataTable } from './DataTabel';
 import { connect } from 'react-redux';
 import PaymentModel from './PaymentModel';
 
+import * as actionsCre from "../../../action/index";
+import Config from '../../../data/Config';
 
 
 class PaymentDatatable extends Component{
 
   state={
     showModal:false,
-    modalData:[]
+    modalData:[],
+    loading:false
   }
 
   toggle=(modalData)=>{
@@ -22,9 +25,24 @@ class PaymentDatatable extends Component{
     this.toggle(props);
   }
   
+  handelVerifyClick=async(data)=>{
+    await this.setLoading();
+    await this.props.setPaymentVeirfyValue(this.props.token, data);
+    setTimeout(async () => {
+        await this.props.loadPayments(this.props.token);
+        await this.setLoading();
+        await this.toggle();
+    }, Config.API_EXE_TIME)
+    
+  }
+
+  setLoading=()=>{
+    this.setState({loading: !this.state.loading})
+  }
+
 render(){
-  const {showModal,modalData}=this.state
-  return showModal ?  <PaymentModel showModel={showModal}  data={modalData} toggle={this.toggle}/> : <Container className="justify-content-md-center">
+  const {showModal,modalData,loading}=this.state
+  return showModal ?  <PaymentModel showModel={showModal} loading={loading}  data={modalData} toggle={this.toggle} handelverify={this.handelVerifyClick}/> : <Container className="justify-content-md-center">
   <center>{this.loadDataTable(this.props)}</center>
 </Container>
  }
@@ -56,6 +74,7 @@ loadDataTable = (props) => {
 
 // This fucntion loading DataTable Rows.
 loadTableRows = (props) => {
+  console.log("Row ",props)
   var rows = props.payments.length > 0 && props.payments.map((payment, key) => { return this.loadSingleRow(payment, key); })
   return rows;
 }
@@ -79,4 +98,4 @@ loadSingleRow = (payment, key) => {
 
 const mapStateToProps = state => { return state; };
 
-export default connect(mapStateToProps)(PaymentDatatable);
+export default connect(mapStateToProps,actionsCre)(PaymentDatatable);

@@ -55,12 +55,25 @@ export function savePayementData(token, postData) {
     return (dispatch) => {
         return axios.post(API_URL + '/user/'+postData.userId+'/payment/save', postData, config)
             .then(response => { 
-                dispatch(savePaymentResult(token)) 
+                dispatch(savePaymentResult(response.data)) 
             })
             .catch(err => { console.log("Error : ", err) })
     }
 }
 
+
+export function setPaymentVeirfyValue(token, postData) {
+    var config = {
+        headers: { 'Authorization': 'Bearer ' + token }
+    };
+    return (dispatch) => {
+        return axios.get(API_URL + '/user/payment/'+postData[0]+'/verify', config)
+            .then(response => { 
+                dispatch(savePaymentVeirfyResult(response.data)) 
+            })
+            .catch(err => { console.log("Error : ", err) })
+    }
+}
 
 // 4) Save Food
 export function saveFoodData(token, postData) {
@@ -157,3 +170,9 @@ export function savePaymentResult(result){
        payment_result:result
     }
    }
+export function savePaymentVeirfyResult(result){
+    return{
+        type:"SAVE_PAYMENT_VEIRFY_RESULT",
+        verifyResult:result
+    }
+}

@@ -6,7 +6,8 @@ const INITIAL_STATE = {
     message: '',
     payments: [],
     users:[],
-    paymentResult:[]
+    paymentResult:[],
+    paymentVerifyResult:[]
 };
 
 
@@ -48,7 +49,12 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 paymentResult: action.payment_result
             };
-
+        case "SAVE_PAYMENT_VEIRFY_RESULT":
+            return {
+                ...state,
+                paymentVerifyResult: action.verifyResult
+            };
+            
         default: return state;
     }
 };
