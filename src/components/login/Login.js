@@ -4,9 +4,9 @@ import { FormGroup } from "reactstrap";
 import { Button, Card, Container, Row, Col, Alert } from "react-bootstrap";
 import { connect } from "react-redux";
 import Loader from 'react-loader-spinner';
-import Config from '../data/Config';
+import Config from '../../data/Config';
 
-import * as actionsCre from "../action/index";
+import * as actionsCre from "../../action/index";
 
 const Login=(props)=>{
     let [loading, setLoading] = useState(false);

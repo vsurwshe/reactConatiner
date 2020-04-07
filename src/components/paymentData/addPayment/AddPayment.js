@@ -1,12 +1,14 @@
 import React,{Component} from 'react';
 import { connect } from "react-redux";
-import * as actionsCre from "../action/index";
+import * as actionsCre from "../../../action/index";
 import { Button} from "react-bootstrap";
 import { AvField, AvForm } from "availity-reactstrap-validation";
 import { FormGroup, CardHeader, CardBody, Card, Row, Container, Col } from "reactstrap";
 import Loader from 'react-loader-spinner';
-import Config from '../data/Config';
-import Main from './Main';
+import Config from '../../../data/Config';
+import Main from '../../Main';
+import PaymentDataTabel from '../paymentTable/PaymentDataTabel';
+import PaymentStructure from '../PaymentStructure';
 
 
 class AddPayment extends Component {
@@ -47,7 +49,7 @@ class AddPayment extends Component {
     render() { 
         const {loading, cancle}=this.state
         const {users}=this.props
-    return cancle ? <Main />: <Container className="justify-content-md-center" style={{paddingTop:30}}>{this.loadPaymentForm(loading,users)}</Container>
+    return cancle ? <PaymentStructure />: <Container className="justify-content-md-center" style={{paddingTop:30}}>{this.loadPaymentForm(loading,users)}</Container>
     }
 
     loadPaymentForm=(loading,users)=><Card  >

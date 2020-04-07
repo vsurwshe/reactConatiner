@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './css/jquery.dataTables.min.css';
+import '../../css/jquery.dataTables.min.css';
 
 // This is a constant used to reflect jquery in our class
 import $ from 'jquery';
