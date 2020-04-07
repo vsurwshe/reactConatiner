@@ -13,7 +13,6 @@ class Main extends Component {
 
   // This is loading main Dashborad Sturctres
   loadSecureFramework = () => {
-    const { loadPaymentValue } = this.state
     return <Container className="justify-content-md-center">
       <Row>
         <HeaderPart />

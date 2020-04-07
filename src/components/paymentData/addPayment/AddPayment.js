@@ -3,11 +3,9 @@ import { connect } from "react-redux";
 import * as actionsCre from "../../../action/index";
 import { Button} from "react-bootstrap";
 import { AvField, AvForm } from "availity-reactstrap-validation";
-import { FormGroup, CardHeader, CardBody, Card, Row, Container, Col } from "reactstrap";
+import { FormGroup,CardBody, Card, Row, Container, Col } from "reactstrap";
 import Loader from 'react-loader-spinner';
 import Config from '../../../data/Config';
-import Main from '../../Main';
-import PaymentDataTabel from '../paymentTable/PaymentDataTabel';
 import PaymentStructure from '../PaymentStructure';
 
 
@@ -81,7 +79,7 @@ class AddPayment extends Component {
             </AvField>
             </Col>
         </Row>
-    <FormGroup> <center><Button type="submit" variant="outline-success">Save Payment Details</Button></center></FormGroup>
+    <FormGroup> <center><Button type="submit" variant="outline-success">Save Payment Details</Button> &nbsp;&nbsp; <Button type="button" variant="outline-danger" onClick={()=> this.cancleLoading()}>Cancle</Button></center></FormGroup>
 </AvForm>
 }
  

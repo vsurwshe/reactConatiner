@@ -47,7 +47,7 @@ const loadTableRows = (props) => {
 
 // Show the Single Bill 
 const loadSingleRow = (payment, key) => {
-  const { payId, mode, transctionsId, amount, tarnsDate, verify, user_id } = payment
+  const { payId, mode, transctionsId, amount, tarnsDate, verify } = payment
   let singleRow = [
     "" + payId,
     "" + (key + 1),
