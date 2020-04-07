@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import * as actionsCre from "../../../action/index";
 import { Button} from "react-bootstrap";
 import { AvField, AvForm } from "availity-reactstrap-validation";
-import { FormGroup,CardBody, Card, Row, Container, Col } from "reactstrap";
+import { FormGroup,CardBody, Card, Row, Container, Col, CardHeader } from "reactstrap";
 import Loader from 'react-loader-spinner';
 import Config from '../../../data/Config';
 import PaymentStructure from '../PaymentStructure';
@@ -51,7 +51,9 @@ class AddPayment extends Component {
     }
 
     loadPaymentForm=(loading,users)=><Card  >
+                    <CardHeader> <b>Add New Payment Deatils</b></CardHeader>
                     <CardBody className="card-align">
+                       
                         {this.loadFormStructre(users)}
                         <center>{loading && this.loadSpinner()}</center>
                     </CardBody>

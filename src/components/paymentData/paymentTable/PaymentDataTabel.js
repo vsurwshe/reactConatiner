@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import { Card, Container } from "react-bootstrap";
-import { CardBody } from 'reactstrap';
+import { CardBody, CardHeader } from 'reactstrap';
 import { DataTable } from './DataTabel';
 import { connect } from 'react-redux';
 import PaymentModel from './PaymentModel';
@@ -42,11 +42,13 @@ class PaymentDatatable extends Component{
 
 render(){
   const {showModal,modalData,loading}=this.state
-  return showModal ?  <PaymentModel showModel={showModal} loading={loading}  data={modalData} toggle={this.toggle} handelverify={this.handelVerifyClick}/> : <Container className="justify-content-md-center">
-  <center>{this.loadDataTable(this.props)}</center>
-</Container>
- }
+  return showModal ?  <PaymentModel showModel={showModal} loading={loading}  data={modalData} toggle={this.toggle} handelverify={this.handelVerifyClick}/> : this.loadDataTableConatier()
+}
 
+   loadDataTableConatier=()=><Container className="justify-content-md-center">
+     {this.loadDataTable(this.props)}
+ </Container>
+ 
  // This Functions Loading Jquery DataTable into bills
 loadDataTable = (props) => {
   // This array collection of header in DataTable
@@ -62,6 +64,7 @@ loadDataTable = (props) => {
   ]
   // This is Returning DataTable Component
   return <Card>
+    <CardHeader><b>Payment DataTabel</b></CardHeader>
     <CardBody className="card-align">
       {/* Calling jquery datatable component providing rows and columns */}
       {(this.props.payments.length > 0) ? <>

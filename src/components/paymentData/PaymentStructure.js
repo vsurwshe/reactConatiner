@@ -34,7 +34,7 @@ class PaymentStructre extends Component {
     }
 
     loadDataTableFrame = () => <><div style={{ padding: 10, float: "right" }}>
-    <Button onClick={() => this.setLoadPayment()}>Add Payment</Button><br />
+    <Button style={{color: "#060606",backgroundColor: "#4dd814",borderColor:" #51f704"}} onClick={() => this.setLoadPayment()}>Add Payment</Button><br />
   </div>
     <PaymentDataTabel />
   </>
