@@ -77,7 +77,7 @@ class AddPayment extends Component {
         <Row>
             <Col>
             <AvField type="select" name="userId" label="Select User" errorMessage="Enter vaild user" required >
-                {(users && users.length>1) ? users.map((user,key)=><option key={key} value={user.user_id}>{user.userName}</option>) : <option>No Users Available</option>}
+                {(users && users.length>1) ? users.map((user,key)=><option key={key} value={user.userId}>{user.userName}</option>) : <option>No Users Available</option>}
             </AvField>
             </Col>
         </Row>
