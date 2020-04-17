@@ -1,92 +1,61 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from "react-redux";
 import * as actionsCre from "../../../action/index";
-import { Button} from "react-bootstrap";
-import { AvField, AvForm } from "availity-reactstrap-validation";
-import { FormGroup,CardBody, Card, Row, Container, Col, CardHeader } from "reactstrap";
+import { CardBody, Card, Container, CardHeader } from "reactstrap";
 import Loader from 'react-loader-spinner';
 import Config from '../../../data/Config';
 import PaymentStructure from '../PaymentStructure';
-
+import PaymentForm from './From';
 
 class AddPayment extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={
-            loading:false,
-            cancle:false
+        this.state = {
+            loading: false,
+            cancle: false
         }
     }
 
-    componentDidMount=()=>{
-        this.props.loadUser();     
+    componentDidMount = () => {
+        this.props.loadUser();
     }
 
-    handelSubmit= async (event, errors, values)=>{
+    handelSubmit = async (event, errors, values) => {
         if (errors.length === 0) {
             await this.setLoading();
-            await this.props.savePayementData(this.props.token ,values);
+            await this.props.savePayementData(this.props.token, values);
             setTimeout(async () => {
-                await this.props.loadMessage()
+                await this.props.loadPayments(this.props.token);
                 await this.setLoading();
                 await this.cancleLoading();
             }, Config.API_EXE_TIME)
         }
     }
 
-    cancleLoading=()=>{
-        this.setState({cancle: !this.state.cancle})
+    cancleLoading = () => {
+        this.setState({ cancle: !this.state.cancle })
     }
 
-    setLoading=()=>{
-        this.setState({loading : !this.state.loading})
+    setLoading = () => {
+        this.setState({ loading: !this.state.loading })
     }
-     // This method loading spiiner
-     loadSpinner = () => { return <Loader type="Oval" color="#00BFFF" height={100} width={100} /> }
+    // This method loading spiiner
+    loadSpinner = () => { return <Loader type="Oval" color="#00BFFF" height={100} width={100} /> }
 
-    render() { 
-        const {loading, cancle}=this.state
-        const {users}=this.props
-    return cancle ? <PaymentStructure />: <Container className="justify-content-md-center" style={{paddingTop:30}}>{this.loadPaymentForm(loading,users)}</Container>
+    render() {
+        const { loading, cancle } = this.state
+        const { users } = this.props
+        return cancle ? <PaymentStructure /> : <Container className="justify-content-md-center" style={{ paddingTop: 30 }}>{this.loadPaymentForm(loading, users)}</Container>
     }
 
-    loadPaymentForm=(loading,users)=><Card  >
-                    <CardHeader> <b>Add New Payment Deatils</b></CardHeader>
-                    <CardBody className="card-align">
-                       
-                        {this.loadFormStructre(users)}
-                        <center>{loading && this.loadSpinner()}</center>
-                    </CardBody>
-                </Card>
-    loadFormStructre=(users)=>  <AvForm onSubmit={this.handelSubmit}>
-        <Row>
-            <Col><AvField type="text" name="amount" label="Enter Payment Amount" errorMessage="Enter vaild payment" placeholder="Ex : 1500,100,...." required /></Col>
-            <Col><AvField type="text" name="transctionsId" label="Enter Transctions Id" errorMessage="Enter vaild transcations id" placeholder="Ex : UBTSC0100036" required /></Col>
-        </Row>
-        <Row>
-            <Col>
-            <AvField type="select" name="mode" label="Select Payment Mode" errorMessage="Enter vaild username" placeholder="Ex : v@gmail.com" required >
-                <option value="0" >OFFLINE</option>
-                <option value="1" >ONLINE</option>
-            </AvField>
-            </Col>
-            <Col>
-            <AvField type="date" name="tarnsDate" label="Enter Transction Date" errorMessage="Enter vaild username" placeholder="Ex : v@gmail.com" required />
-            </Col>
-        </Row>
-        <Row>
-            <Col>
-            <AvField type="select" name="userId" label="Select User" errorMessage="Enter vaild user" required >
-                {(users && users.length>1) ? users.map((user,key)=><option key={key} value={user.userId}>{user.userName}</option>) : <option>No Users Available</option>}
-            </AvField>
-            </Col>
-        </Row>
-    <FormGroup> <center><Button type="submit" variant="outline-success">Save Payment Details</Button> &nbsp;&nbsp; <Button type="button" variant="outline-danger" onClick={()=> this.cancleLoading()}>Cancle</Button></center></FormGroup>
-</AvForm>
+    loadPaymentForm = (loading, users) => <Card  >
+        <CardHeader> <b>Add New Payment Deatils</b></CardHeader>
+        <CardBody className="card-align">
+            <PaymentForm users={users} handelSubmit={this.handelSubmit} cancleLoading={this.cancleLoading} />
+            <center>{loading && this.loadSpinner()}</center>
+        </CardBody>
+    </Card>
 }
- 
-
 
 const mapStateToProps = state => { return state; };
-
-export default connect(mapStateToProps,actionsCre)(AddPayment);
+export default connect(mapStateToProps, actionsCre)(AddPayment);
