@@ -7,7 +7,7 @@ import Config from '../../../data/Config';
 import PaymentStructure from '../PaymentStructure';
 import PaymentForm from './From';
 
-class AddPayment extends Component {
+class PaymentOps extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -17,7 +17,7 @@ class AddPayment extends Component {
     }
 
     componentDidMount = () => {
-        this.props.loadUser();
+        (this.props.users && this.props.users.length === 0) && this.props.loadUser();
     }
 
     handelSubmit = async (event, errors, values) => {
@@ -43,19 +43,27 @@ class AddPayment extends Component {
     loadSpinner = () => { return <Loader type="Oval" color="#00BFFF" height={100} width={100} /> }
 
     render() {
-        const { loading, cancle } = this.state
-        const { users } = this.props
-        return cancle ? <PaymentStructure /> : <Container className="justify-content-md-center" style={{ paddingTop: 30 }}>{this.loadPaymentForm(loading, users)}</Container>
+        const { cancle } = this.state
+        return cancle ? <PaymentStructure /> : this.loadPaymentForm()
     }
 
-    loadPaymentForm = (loading, users) => <Card  >
-        <CardHeader> <b>Add New Payment Deatils</b></CardHeader>
+    loadPaymentForm = () => {
+    const {loading }= this.state
+    const { users, rowData } = this.props
+    return <Container className="justify-content-md-center" style={{ paddingTop: 30 }}> <Card  >
+        <CardHeader> <b>{rowData.length>1 ? "Edit Payment Deatils" : "Add New Payment Deatils"}</b></CardHeader>
         <CardBody className="card-align">
-            <PaymentForm users={users} handelSubmit={this.handelSubmit} cancleLoading={this.cancleLoading} />
+            <PaymentForm 
+            users={users} 
+            handelSubmit={this.handelSubmit} 
+            cancleLoading={this.cancleLoading}
+            data={rowData} 
+            />
             <center>{loading && this.loadSpinner()}</center>
         </CardBody>
     </Card>
+    </Container>}
 }
 
 const mapStateToProps = state => { return state; };
-export default connect(mapStateToProps, actionsCre)(AddPayment);
+export default connect(mapStateToProps, actionsCre)(PaymentOps);

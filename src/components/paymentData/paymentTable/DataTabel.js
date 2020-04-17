@@ -53,16 +53,36 @@ export class DataTable extends Component {
 
                 // Define a button in the datatable
                 {
-                    "targets": -2, // specifies the position of button(last but one) in the row
+                    "targets": -3, // specifies the position of button(last but one) in the row
                     "data": function (row, type, val, meta) {
                         return row[6] === "No" ? "<button class='verifyButton' style='background-color: green; border-radius: 0.25em' >Verify</button>" : "Verifed"
                     },
                     "createdCell": (td, cellData, rowData, row, col) => {
                         $(td).click(e => {
-                            this.props.handelClick(rowData)
+                            this.props.handelVerifyClick(rowData)
                         })
                     },
                     // "defaultContent": "<button class='verifyButton' style='background-color: green; border-radius: 0.25em'>Verify</button>"
+                },
+                {
+                    "targets": -2, // specifies the position of button(last but one) in the row
+                    "data": null,
+                    "createdCell": (td, cellData, rowData, row, col) => {
+                        $(td).click(e => {
+                            this.props.handelEditClick(rowData)
+                        })
+                    },
+                    "defaultContent": "<button class='verifyButton' style='background-color: yellow; border-radius: 0.25em'>Edit</button>"
+                },
+                {
+                    "targets": -1, // specifies the position of button(last but one) in the row
+                    "data": null,
+                    "createdCell": (td, cellData, rowData, row, col) => {
+                        $(td).click(e => {
+                            this.props.handelDeleteClick(rowData)
+                        })
+                    },
+                    "defaultContent": "<button class='verifyButton' style='background-color: red; border-radius: 0.25em'>Delete</button>"
                 }
             ],
         })

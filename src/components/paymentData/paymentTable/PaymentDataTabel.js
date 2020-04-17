@@ -22,7 +22,7 @@ class PaymentDatatable extends Component {
     this.toggle(props);
   }
 
-  handelVerifyClick = async (data) => {
+  handelClick = async (data) => {
     await this.setLoading();
     await this.props.setPaymentVeirfyValue(this.props.token, data);
     setTimeout(async () => {
@@ -32,13 +32,14 @@ class PaymentDatatable extends Component {
     }, Config.API_EXE_TIME)
   }
 
+
   setLoading = () => {
     this.setState({ loading: !this.state.loading })
   }
 
   render() {
     const { showModal, modalData, loading } = this.state
-    return showModal ? <PaymentModel showModel={showModal} loading={loading} data={modalData} toggle={this.toggle} handelverify={this.handelVerifyClick} /> : this.loadDataTableConatier()
+    return showModal ? <PaymentModel showModel={showModal} loading={loading} data={modalData} toggle={this.toggle} handelverify={this.handelClick} /> : this.loadDataTableConatier()
   }
 
   loadDataTableConatier = () => <Container className="justify-content-md-center">
@@ -51,12 +52,13 @@ class PaymentDatatable extends Component {
     let columns = [
       { title: '', visible: false },
       { title: "Sr. no" },
-      { title: "Modes" },
-      { title: "Transcations Dates" },
-      { title: "Transcation Ids" },
-      { title: "Amount" },
+      { title: "Payment Mode" },
+      { title: "Payment Date" },
+      { title: "Transcation Id" },
+      { title: "Payment Amount" },
       { title: "Verify" },
       { title: "", orderable: false }, // This column used for edit button
+      { title: "", orderable: false },
     ]
     // This is Returning DataTable Component
     return <Card>
@@ -64,7 +66,13 @@ class PaymentDatatable extends Component {
       <CardBody className="card-align">
         {/* Calling jquery datatable component providing rows and columns */}
         {(this.props.payments.length > 0) ? <>
-          <DataTable data={this.loadTableRows(this.props)} columns={columns} handelClick={this.verifyHandelClick} /> </> : <DataTable columns={columns} />
+          <DataTable
+            data={this.loadTableRows(this.props)}
+            columns={columns}
+            handelVerifyClick={this.verifyHandelClick}
+            handelEditClick={this.props.handelEditClick}
+            handelDeleteClick={this.props.handelDeleteClick}
+          /> </> : <DataTable columns={columns} />
         }
       </CardBody>
     </Card>
@@ -72,7 +80,6 @@ class PaymentDatatable extends Component {
 
   // This fucntion loading DataTable Rows.
   loadTableRows = (props) => {
-    console.log("Row ", props)
     var rows = props.payments.length > 0 && props.payments.map((payment, key) => { return this.loadSingleRow(payment, key); })
     return rows;
   }
@@ -88,6 +95,7 @@ class PaymentDatatable extends Component {
       "" + transctionsId,
       "" + amount,
       "" + verify,
+      "",
       ""
     ]
     return singleRow;

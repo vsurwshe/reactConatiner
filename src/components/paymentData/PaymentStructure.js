@@ -1,20 +1,21 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import { Button } from "react-bootstrap";
 import { connect } from "react-redux";
-
-
 import * as actionsCre from "../../action/index";
-import AddPayment from './addPayment/AddPayment';
 import PaymentDataTabel from './paymentTable/PaymentDataTabel';
+import PaymentOps from './paymentOperation/PaymentOps';
 
 class PaymentStructre extends Component {
-    state = {
-        loadPaymentValue: false
-      }
+  state = {
+    loadPaymentValue: false,
+    editPayment: false,
+    deletePayment: false,
+    editDeleteData: []
+  }
 
-    componentDidMount=()=>{
-        this.loadPaymentData();
-    }
+  componentDidMount = () => {
+    this.loadPaymentData();
+  }
 
 
   setLoadPayment = () => {
@@ -27,22 +28,41 @@ class PaymentStructre extends Component {
     }
   }
 
+  editPaymentToggle = (rowData) => {
+    this.setState({ editPayment: !this.state.editPayment, editDeleteData: rowData })
+  }
 
-    render() { 
-        const { loadPaymentValue } = this.state
-        return loadPaymentValue ? this.loadAddFrame() : this.loadDataTableFrame()
-    }
+  deletePaymentToggle = (rowData) => {
+    this.setState({ deletePayment: !this.state.deletePayment, editDeleteData: rowData })
+  }
 
-    loadDataTableFrame = () => <><div style={{ padding: 10, float: "right" }}>
-    <Button style={{color: "#060606",backgroundColor: "#4dd814",borderColor:" #51f704"}} onClick={() => this.setLoadPayment()}>Add Payment</Button><br />
+  handelEditClick = async (data) => {
+    this.editPaymentToggle(data);
+  }
+
+  handelDeleteClick = async (data) => {
+    this.deletePaymentToggle(data);
+  }
+
+  render() {
+    const { loadPaymentValue, editPayment} = this.state
+    return (loadPaymentValue || editPayment) ? this.loadAddFrame() : this.loadDataTableFrame()
+  }
+
+  loadDataTableFrame = () => <><div style={{ padding: 10, float: "right" }}>
+    <Button style={{ color: "#060606", backgroundColor: "#4dd814", borderColor: " #51f704" }} onClick={() => this.setLoadPayment()}>Add Payment</Button><br />
   </div>
-    <PaymentDataTabel />
+    <PaymentDataTabel
+      handelEditClick={this.handelEditClick}
+      handelDeleteClick={this.handelDeleteClick}
+    />
   </>
 
-loadAddFrame = () => <AddPayment />
-
+  loadAddFrame = () => {
+    const { editDeleteData } = this.state
+    return <PaymentOps rowData={editDeleteData} />
+  }
 }
- 
-const mapStateToProps = state => { return state; };
 
-export default connect(mapStateToProps,actionsCre)(PaymentStructre);
+const mapStateToProps = state => { return state; };
+export default connect(mapStateToProps, actionsCre)(PaymentStructre);
