@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import { Link, Switch, Route } from 'react-router-dom';
 import RoutesPath from './RoutesPath';
 import { Container, Row, Col } from 'react-bootstrap';
-import HeaderPart from '../Helper/Header';
+import HeaderPart from '../helper/Header';
 import { connect } from "react-redux";
 import * as actionsCre from "../../action/index";
 import Login, { isLogin } from '../login/Login';

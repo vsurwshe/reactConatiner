@@ -18,6 +18,11 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 token: action.token
             };
+        case "TOKEN_REMOVE":
+            return {
+                ...state,
+                token: action.token
+            };
         case "SAVE_USER":
             return {
                 ...state,

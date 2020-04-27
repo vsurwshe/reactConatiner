@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
-import { Container, Row} from "react-bootstrap";
 import { connect } from "react-redux";
 import Login, { isLogin } from './login/Login';
-
 import * as actionsCre from "../action/index";
-import HeaderPart from './Helper/Header';
-import PaymentStructure from './paymentData/PaymentStructure';
 
 class Main extends Component {
 

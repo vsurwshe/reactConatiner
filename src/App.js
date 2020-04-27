@@ -1,6 +1,5 @@
 import React from 'react';
-import Main from './components/Main';
-import MainPage from './components/Layout/MainPage';
+import MainPage from './components/layout/MainPage';
 
 
 const App=()=> {

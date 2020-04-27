@@ -55,7 +55,7 @@ export default connect(mapStateToProps, actionsCre)(Login);
 
 // This Checking user is logined or not
 export const isLogin = (props) => {
-    if (props.token !== "") {
+    if ( props && props.token !== "") {
         return true;
     } else {
         return false;

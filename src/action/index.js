@@ -17,6 +17,12 @@ export function loadToken(userData) {
         })
     }
 }
+
+export function logoutUser() {
+    return (dispatch) => {
+        dispatch(logout());
+    }
+}
 // 2) Get user
 export function loadPayments(token) {
     return (dispatch) => {
@@ -123,7 +129,14 @@ export function deleteFoodData(token, delData) {
 export function saveToken(token) {
     return {
         type: "TOKEN_CHNAGE",
-        token: token.userToken
+        token: token ? token.userToken : []
+    }
+}
+
+export function logout() {
+    return {
+        type: "TOKEN_REMOVE",
+        token: null
     }
 }
 // This functions Save User
