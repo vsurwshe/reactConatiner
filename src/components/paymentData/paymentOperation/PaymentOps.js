@@ -51,7 +51,7 @@ class PaymentOps extends Component {
     const {loading }= this.state
     const { users, rowData } = this.props
     return <Container className="justify-content-md-center" style={{ paddingTop: 30 }}> <Card  >
-        <CardHeader> <b>{rowData.length>1 ? "Edit Payment Deatils" : "Add New Payment Deatils"}</b></CardHeader>
+        <CardHeader> <b>{(rowData && rowData.length>1) ? "Edit Payment Deatils" : "Add New Payment Deatils"}</b></CardHeader>
         <CardBody className="card-align">
             <PaymentForm 
             users={users} 

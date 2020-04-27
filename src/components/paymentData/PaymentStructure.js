@@ -49,14 +49,19 @@ class PaymentStructre extends Component {
     return (loadPaymentValue || editPayment) ? this.loadAddFrame() : this.loadDataTableFrame()
   }
 
-  loadDataTableFrame = () => <><div style={{ padding: 10, float: "right" }}>
-    <Button style={{ color: "#060606", backgroundColor: "#4dd814", borderColor: " #51f704" }} onClick={() => this.setLoadPayment()}>Add Payment</Button><br />
-  </div>
-    <PaymentDataTabel
-      handelEditClick={this.handelEditClick}
-      handelDeleteClick={this.handelDeleteClick}
-    />
-  </>
+  loadDataTableFrame = () =><PaymentDataTabel
+  handelEditClick={this.handelEditClick}
+  handelDeleteClick={this.handelDeleteClick}
+/> 
+  
+  // <><div style={{ padding: 10, float: "right" }}>
+  //   <Button style={{ color: "#060606", backgroundColor: "#4dd814", borderColor: " #51f704" }} onClick={() => this.setLoadPayment()}>Add Payment</Button><br />
+  // </div>
+  //   <PaymentDataTabel
+  //     handelEditClick={this.handelEditClick}
+  //     handelDeleteClick={this.handelDeleteClick}
+  //   />
+  // </>
 
   loadAddFrame = () => {
     const { editDeleteData } = this.state

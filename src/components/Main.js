@@ -13,14 +13,16 @@ class Main extends Component {
 
   // This is loading main Dashborad Sturctres
   loadSecureFramework = () => {
-    return <Container className="justify-content-md-center">
-      <Row>
-        <HeaderPart />
-      </Row>
-      <Row >
-        <PaymentStructure />
-      </Row>
-    </Container>
+    return  <h1>User Dashborad</h1>
+    
+    // <Container className="justify-content-md-center">
+    //   <Row>
+    //     <HeaderPart />
+    //   </Row>
+    //   <Row >
+    //     <PaymentStructure />
+    //   </Row>
+    // </Container>
   };
 
   render() {
