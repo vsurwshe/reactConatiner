@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import { connect } from "react-redux";
 
-import * as actionsCre from "../../action/index";
+import * as actionsCre from "../../action/User";
 import Login, { isLogin } from './Login';
 
 

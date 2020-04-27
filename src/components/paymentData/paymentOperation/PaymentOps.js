@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import * as actionsCre from "../../../action/index";
+import { bindActionCreators} from "redux"
+import * as actionsPayment from "../../../action/Payment";
+import * as actionsUser from "../../../action/User";
 import { CardBody, Card, Container, CardHeader } from "reactstrap";
 import Loader from 'react-loader-spinner';
 import Config from '../../../data/Config';
@@ -17,15 +19,16 @@ class PaymentOps extends Component {
     }
 
     componentDidMount = () => {
-        (this.props.users && this.props.users.length === 0) && this.props.loadUser();
+        console.log(this.props.usersAct);
+        (this.props.users && this.props.users.length === 0) && this.props.usersAct.loadUser();
     }
 
     handelSubmit = async (event, errors, values) => {
         if (errors.length === 0) {
             await this.setLoading();
-            await this.props.savePayementData(this.props.token, values);
+            await this.props.paymentAct.savePayementData(this.props.token, values);
             setTimeout(async () => {
-                await this.props.loadPayments(this.props.token);
+                await this.props.paymentAct.loadPayments(this.props.token);
                 await this.setLoading();
                 await this.cancleLoading();
             }, Config.API_EXE_TIME)
@@ -66,4 +69,9 @@ class PaymentOps extends Component {
 }
 
 const mapStateToProps = state => { return state; };
-export default connect(mapStateToProps, actionsCre)(PaymentOps);
+const mapDispatchToProps=(dispatch)=>({
+usersAct : bindActionCreators(actionsUser,dispatch),
+paymentAct : bindActionCreators(actionsPayment,dispatch)
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(PaymentOps);

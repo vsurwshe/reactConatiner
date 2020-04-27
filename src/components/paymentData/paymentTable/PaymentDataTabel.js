@@ -4,7 +4,7 @@ import { CardBody, CardHeader } from 'reactstrap';
 import { DataTable } from './DataTabel';
 import { connect } from 'react-redux';
 import PaymentModel from './PaymentModel';
-import * as actionsCre from "../../../action/index";
+import * as actionsCre from "../../../action/Payment";
 import Config from '../../../data/Config';
 
 class PaymentDatatable extends Component {

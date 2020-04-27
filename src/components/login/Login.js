@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import Loader from 'react-loader-spinner';
 import Config from '../../data/Config';
 
-import * as actionsCre from "../../action/index";
+import * as actionsCre from "../../action/User";
 
 const Login=(props)=>{
     let [loading, setLoading] = useState(false);

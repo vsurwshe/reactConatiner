@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from "react-bootstrap";
 import { connect } from "react-redux";
-import * as actionsCre from "../../action/index";
+import * as actionsCre from "../../action/Payment";
 import PaymentDataTabel from './paymentTable/PaymentDataTabel';
 import PaymentOps from './paymentOperation/PaymentOps';
 

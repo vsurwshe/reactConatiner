@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import * as actionsCre from "../../../action/index";
+import * as actionsCre from "../../../action/Payment";
 import { Button } from "react-bootstrap";
 import { AvField, AvForm } from "availity-reactstrap-validation";
 import { FormGroup, Row, Col, } from "reactstrap";
