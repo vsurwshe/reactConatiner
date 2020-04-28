@@ -1,13 +1,16 @@
 const INITIAL_STATE = {
     token: '',
     userData: [],
-    foodData: [],
     color: '',
     message: '',
+    users: [],
+    //------------------ Payment state 
     payments: [],
-    users:[],
-    paymentResult:[],
-    paymentVerifyResult:[]
+    paymentResult: [],
+    paymentVerifyResult: [],
+    //-----------------  Invoice State
+    invoices: [],
+    invoiceResult: [],
 };
 
 
@@ -28,26 +31,23 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 userData: action.userData
             };
-        case "SAVE_FOOD":
+        case "SAVE_USERS":
             return {
                 ...state,
-                foodData: action.foodData
+                users: action.users
             };
+
         case "NOTIFICATIONS":
             return {
                 ...state,
                 color: action.color,
                 message: action.message
             };
+        //--------------------Payments Actions
         case "SAVE_PAYMENTS":
             return {
                 ...state,
                 payments: action.payments
-            };
-        case "SAVE_USERS":
-            return {
-                ...state,
-                users: action.users
             };
         case "SAVE_PAYMENT_RESULT":
             return {
@@ -59,7 +59,17 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 paymentVerifyResult: action.verifyResult
             };
-            
+        //------------------ Invoice Actions 
+        case "SAVE_INVOICE":
+            return {
+                ...state,
+                invoices: action.invoice
+            };
+        case "SAVE_INVOICE_RESULT":
+            return {
+                ...state,
+                invoiceResult: action.invoice_result
+            };
         default: return state;
     }
 };

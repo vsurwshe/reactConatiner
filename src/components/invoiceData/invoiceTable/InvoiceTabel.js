@@ -3,7 +3,7 @@ import '../../css/jquery.dataTables.min.css';
 import $ from 'jquery';
 $.DataTable = require('datatables.net');
 
-export class InvoiceDataTable extends Component {
+export class InvoiceTable extends Component {
     componentDidMount() {
         // Attaches normal html table to jquery datatable
         this.$el = $(this.el);

@@ -1,7 +1,7 @@
 import Main from '../Main';
 import PaymentStructure from '../paymentData/PaymentStructure';
-import MainInvoice from '../invoice/MainInvoice';
 import Logout from '../login/Logout';
+import InvoiceStructure from '../invoiceData/InvoiceStructure';
 
 export default [
     {
@@ -17,7 +17,7 @@ export default [
     {
         link:"/invoice",
         text:"Payment Invoice",
-        componet: MainInvoice
+        componet: InvoiceStructure
     },
     {
         link:"/logout",

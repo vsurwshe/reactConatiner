@@ -7,9 +7,9 @@ import { CardBody, Card, Container, CardHeader } from "reactstrap";
 import Loader from 'react-loader-spinner';
 import Config from '../../../data/Config';
 import PaymentStructure from '../PaymentStructure';
-import PaymentForm from './From';
+import PaymentForm from './InvoiceFrom';
 
-class PaymentOps extends Component {
+class InvoiceOps extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -73,4 +73,4 @@ usersAct : bindActionCreators(actionsUser,dispatch),
 paymentAct : bindActionCreators(actionsPayment,dispatch)
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)(PaymentOps);
+export default connect(mapStateToProps,mapDispatchToProps)(InvoiceOps);
