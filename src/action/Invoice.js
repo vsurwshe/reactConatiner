@@ -31,6 +31,19 @@ export function saveInvoiceData(token, postData) {
     }
 }
 
+export function getInvoiceDate(token) {
+    var config = {
+        headers: { 'Authorization': 'Bearer ' + token }
+    };
+    return (dispatch) => {
+        return axios.get(API_URL + '/invoice/getDates', config)
+            .then(response => {
+                dispatch(saveInvoiceDates(response.data))
+            })
+            .catch(err => { console.log("Error : ", err) })
+    }
+}
+
 //------------------------- Custome Methods for 
 // This functions Saves invoice get 
 export function saveInvoice(data) {
@@ -45,5 +58,12 @@ export function saveInvoiceResult(data) {
     return {
         type: "SAVE_INVOICE_RESULT",
         invoice_result: data
+    }
+}
+
+export function saveInvoiceDates(data){
+    return{
+        type:"SAVE_INVOICE_DATE",
+        dates:data
     }
 }

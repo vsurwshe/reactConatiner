@@ -11,6 +11,11 @@ class InvoiceStructure extends Component {
         }
     }
     
+    componentDidMount=()=>{
+        console.log(this.props)
+       
+    }
+
     setInvoiceForm=()=>{
         this.setState({setInvoiceForm: !this.state.setInvoiceForm})
     }

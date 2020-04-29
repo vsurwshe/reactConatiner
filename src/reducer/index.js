@@ -11,6 +11,7 @@ const INITIAL_STATE = {
     //-----------------  Invoice State
     invoices: [],
     invoiceResult: [],
+    invoiceDate: [],
 };
 
 
@@ -65,6 +66,12 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 invoices: action.invoice
             };
+        case "SAVE_INVOICE_DATE":
+            return {
+                ...state,
+                invoiceDate: action.dates
+            };
+
         case "SAVE_INVOICE_RESULT":
             return {
                 ...state,

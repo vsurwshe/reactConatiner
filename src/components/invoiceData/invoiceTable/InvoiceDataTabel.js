@@ -3,7 +3,6 @@ import { Card, Container } from "react-bootstrap";
 import { CardBody, CardHeader } from 'reactstrap';
 import { InvoiceTable } from './InvoiceTabel';
 import { connect } from 'react-redux';
-// import PaymentModel from './PaymentModel';
 import * as actionsCre from "../../../action/Payment";
 import Config from '../../../data/Config';
 

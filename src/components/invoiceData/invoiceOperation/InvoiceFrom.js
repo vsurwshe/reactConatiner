@@ -6,19 +6,21 @@ import { AvField, AvForm } from "availity-reactstrap-validation";
 import { FormGroup, Row, Col, } from "reactstrap";
 
 const InvoiceForm = (props) => {
-    const {handelSubmit, data}= props
+    (props.invoiceDate && props.invoiceDate.length === 0) && props.getInvoiceDate(props.token)
+    const { handelSubmit, invoiceDate } = props
     return <AvForm onSubmit={handelSubmit}>
         <Row>
-            <Col>
-                <AvField type="select" name="date" label="Select Payment Date for to Generate Payment Invoice"  errorMessage="Select Valid Date" required >
-                    <option value="0" >OFFLINE</option>
-                    <option value="1" >ONLINE</option>
+            {(invoiceDate && invoiceDate.length > 1) ? <Col>
+                <AvField type="select" name="date" label="Select Payment Date for to Generate Payment Invoice" errorMessage="Select Valid Date" required >
+                    {invoiceDate.map((date, key) => {
+                        return <option key={key} value={date} >{date}</option>
+                    })}
                 </AvField>
-            </Col>
+            </Col> : <h1>Sorry No Payment is Ready for the Invoice</h1>}
         </Row>
-        <FormGroup> 
+        <FormGroup>
             <center>
-            <Button type="submit" variant="outline-success">Generate Payment Invoices</Button>
+                <Button type="submit" variant="outline-success">Generate Payment Invoices</Button>
     &nbsp;&nbsp;
     <Button type="button" variant="outline-danger" onClick={() => props.cancleLoading()}>Cancle</Button></center></FormGroup>
     </AvForm>
