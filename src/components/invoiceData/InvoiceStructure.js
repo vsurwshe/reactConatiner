@@ -1,19 +1,34 @@
 import React, {Component} from 'react';
 import { Button } from 'react-bootstrap';
+import { connect } from "react-redux";
+import * as actionsInvoice from "../../action/Invoice";
 import InvoiceDataTable from "./invoiceTable/InvoiceDataTabel";
 import InvoiceFrom from './invoiceOperation/InvoiceFrom';
+import Config from '../../data/Config';
 
 class InvoiceStructure extends Component {
     constructor(props){
         super(props);
         this.state={
+            loading:false,
             setInvoiceForm:false
         }
     }
-    
-    componentDidMount=()=>{
-        console.log(this.props)
-       
+
+    handelInvoiceSubmit=async (event, errors, values)=>{
+        if (errors.length === 0) {
+            await this.setLoading();
+            await this.props.generateInvoice(this.props.token,values.date);
+            setTimeout(async () => {
+                await this.props.getInvoiceDate(this.props.token);
+                await this.setLoading();
+                await this.setInvoiceForm();
+            }, Config.API_EXE_TIME)
+        }
+    }
+
+    setLoading=()=>{
+        this.setState({loading: !this.state.loading})
     }
 
     setInvoiceForm=()=>{
@@ -21,8 +36,8 @@ class InvoiceStructure extends Component {
     }
     
     render() { 
-        const {setInvoiceForm}=this.state
-        return setInvoiceForm ? <InvoiceFrom cancleLoading={this.setInvoiceForm} /> : this.loadInvoiceFrame();
+        const {setInvoiceForm, loading}=this.state
+        return setInvoiceForm ? <InvoiceFrom handelSubmit={this.handelInvoiceSubmit} cancleLoading={this.setInvoiceForm} loading={loading} /> : this.loadInvoiceFrame();
     }
 
     loadInvoiceFrame=()=><>
@@ -36,4 +51,5 @@ class InvoiceStructure extends Component {
   </>
 }
  
-export default InvoiceStructure;
+const mapStateToProps = state => { return state; };
+export default connect(mapStateToProps,actionsInvoice)(InvoiceStructure);

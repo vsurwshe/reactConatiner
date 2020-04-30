@@ -73,4 +73,5 @@ usersAct : bindActionCreators(actionsUser,dispatch),
 paymentAct : bindActionCreators(actionsPayment,dispatch)
 })
 
+
 export default connect(mapStateToProps,mapDispatchToProps)(PaymentOps);

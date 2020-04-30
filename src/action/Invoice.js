@@ -18,12 +18,12 @@ export function loadInvoices(token) {
     }
 }
 
-export function saveInvoiceData(token, postData) {
+export function generateInvoice(token, invoiceDate) {
     var config = {
         headers: { 'Authorization': 'Bearer ' + token }
     };
     return (dispatch) => {
-        return axios.post(API_URL + '/user/' + postData.userId + '/payment/save', postData, config)
+        return axios.post(API_URL + '/invoice/genrate/' + invoiceDate, config)
             .then(response => {
                 dispatch(saveInvoiceResult(response.data))
             })
