@@ -5,16 +5,17 @@ import { InvoiceTable } from './InvoiceTabel';
 import { connect } from 'react-redux';
 import * as actionsCre from "../../../action/Payment";
 import Config from '../../../data/Config';
+import InvoiceModal from "../invoiceTable/InvoiceModal";
 
 class InvoiceDataTable extends Component {
   state = {
-    showModal: false,
+    showInvoiceModal: false,
     modalData: [],
     loading: false
   }
 
   toggle = (modalData) => {
-    this.setState({ showModal: !this.state.showModal, modalData })
+    this.setState({ showInvoiceModal: !this.state.showInvoiceModal, modalData })
   }
 
   verifyHandelClick = (props) => {
@@ -37,41 +38,40 @@ class InvoiceDataTable extends Component {
   }
 
   render() {
-    const { showModal, modalData, loading } = this.state
-    return this.loadDataTableConatier();
-    // return showModal ? <PaymentModel showModel={showModal} loading={loading} data={modalData} toggle={this.toggle} handelverify={this.handelClick} /> : this.loadDataTableConatier()
+    const { showInvoiceModal, modalData, loading } = this.state
+    // return this.loadDataTableConatier();
+    return showInvoiceModal ? <InvoiceModal showModel={showInvoiceModal} loading={loading} data={modalData} toggle={this.toggle} handelverify={this.handelClick} /> : this.loadDataTableConatier()
   }
 
   loadDataTableConatier = () => <Container className="justify-content-md-center">
-    {this.loadDataTable(this.props)}
+    {this.loadDataTable()}
   </Container>
 
   // This Functions Loading Jquery DataTable into bills
-  loadDataTable = (props) => {
+  loadDataTable = () => {
     // This array collection of header in DataTable
     let columns = [
       { title: '', visible: false },
       { title: "Sr. no" },
-      { title: "Payment Mode" },
-      { title: "Payment Date" },
-      { title: "Transcation Id" },
-      { title: "Payment Amount" },
-      { title: "Verify" },
-      { title: "", orderable: false }, // This column used for edit button
+      { title: "Invoice Id" },
+      { title: "Invoice Date" },
+      { title: "Invoice Total Amount" },
       { title: "", orderable: false },
+      // { title: "", orderable: false }, // This column used for edit button
+      // { title: "", orderable: false },
     ]
     // This is Returning DataTable Component
     return <Card>
       <CardHeader><b>Payment Invoice Tabel</b></CardHeader>
       <CardBody className="card-align">
         {/* Calling jquery datatable component providing rows and columns */}
-        {(this.props.payments.length > 0) ? <>
+        {(this.props.invoices.length > 0) ? <>
           <InvoiceTable
             data={this.loadTableRows(this.props)}
             columns={columns}
-            handelVerifyClick={this.verifyHandelClick}
-            handelEditClick={this.props.handelEditClick}
-            handelDeleteClick={this.props.handelDeleteClick}
+            handelShowInvoice={this.showInvoice}
+            // handelEditClick={this.props.handelEditClick}
+            // handelDeleteClick={this.props.handelDeleteClick}
           /> </> : <InvoiceTable columns={columns} />
         }
       </CardBody>
@@ -80,25 +80,29 @@ class InvoiceDataTable extends Component {
 
   // This fucntion loading DataTable Rows.
   loadTableRows = (props) => {
-    var rows = props.payments.length > 0 && props.payments.map((payment, key) => { return this.loadSingleRow(payment, key); })
+    var rows = props.invoices.length > 0 && props.invoices.map((invoice, key) => { return this.loadSingleRow(invoice, key); })
     return rows;
   }
 
   // Show the Single Bill 
-  loadSingleRow = (payment, key) => {
-    const { payId, mode, transctionsId, amount, tarnsDate, verify } = payment
+  loadSingleRow = (invoice, key) => {
+    const { invoiceId,invoiceDate, invoiceTotalAmount, payments} = invoice
     let singleRow = [
-      "" + payId,
+      ""+  key,
       "" + (key + 1),
-      "" + mode,
-      "" + tarnsDate,
-      "" + transctionsId,
-      "" + amount,
-      "" + verify,
-      "",
-      ""
+      "" + invoiceId,
+      "" + invoiceDate,
+      "" + invoiceTotalAmount,
+      "" + payments,
+      // "",
+      // ""
     ]
     return singleRow;
+  }
+
+  showInvoice=(data)=>{
+    let filterData= this.props.invoices.length >0  && this.props.invoices.filter(invoiceData=> invoiceData.invoiceId=== parseInt(data[0]));
+    this.toggle(filterData[0]);
   }
 }
 

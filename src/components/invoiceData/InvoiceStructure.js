@@ -15,6 +15,10 @@ class InvoiceStructure extends Component {
         }
     }
 
+    componentDidMount=()=>{
+        this.props.invoices.length === 0 && this.props.loadInvoices(this.props.token);
+    }
+
     handelInvoiceSubmit=async (event, errors, values)=>{
         if (errors.length === 0) {
             await this.setLoading();
