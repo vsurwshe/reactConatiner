@@ -10,7 +10,7 @@ const InvoiceModal = (props) => {
             {InvoiceHTMLTemplate(props.data)}
         </ModalBody>
         <ModalFooter>
-            <Button color="primary" onClick={() => props.handelverify(props.data)}> Print Invoice</Button>
+            <Button color="primary" onClick={() => window.print()}> Print Invoice</Button>
             <Button color="secondary" onClick={props.toggle}> Cancel</Button>
         </ModalFooter>
     </Modal>
@@ -18,7 +18,7 @@ const InvoiceModal = (props) => {
 
 const InvoiceHTMLTemplate = (props) => {
     console.log(props);
-    return <div className="invoice-box">
+    return <div id="invoice-box" className="invoice-box">
         <table cellPadding="0" cellSpacing="0">
             <tr className="top">
                 <td colSpan="3">
@@ -26,7 +26,8 @@ const InvoiceHTMLTemplate = (props) => {
                         <tbody>
                             <tr>
                                 <td className="title">
-                                    <img src="https://www.sparksuite.com/images/logo.png" style={{ width: "100%", maxWidth: 300 }} />
+                                    <h1>V & Y</h1>
+                                    {/* <img src="https://www.sparksuite.com/images/logo.png" style={{ width: "100%", maxWidth: 300 }} /> */}
                                 </td>
                                 <td>
                                     Invoice #: {props.invoiceId}<br />

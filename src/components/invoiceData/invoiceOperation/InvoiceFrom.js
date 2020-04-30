@@ -11,7 +11,7 @@ const InvoiceForm = (props) => {
     const { handelSubmit, invoiceDate, loading } = props
     return <AvForm onSubmit={handelSubmit}>
         <Row>
-            {(invoiceDate && invoiceDate.length > 1) ? <Col>
+            {(invoiceDate && invoiceDate.length >= 1) ? <Col>
                 <AvField type="select" name="date" label="Select Payment Date for to Generate Payment Invoice" errorMessage="Select Valid Date" required >
                     {invoiceDate.map((date, key) => {
                         return <option key={key} value={date} >{date}</option>
