@@ -7,11 +7,15 @@ const INITIAL_STATE = {
     //------------------ Payment state 
     payments: [],
     paymentResult: [],
+    udpatePaymentResult: [],
     paymentVerifyResult: [],
+    paymentDeleteResult: "",
     //-----------------  Invoice State
     invoices: [],
     invoiceResult: [],
+    updateInvoiceResult: [],
     invoiceDate: [],
+    invoiceDeleteResult: "",
 };
 
 
@@ -54,6 +58,16 @@ export default (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 paymentResult: action.payment_result
+            };
+        case "UPDATE_PAYMENT_RESULT":
+            return {
+                ...state,
+                udpatePaymentResult: action.payment_result
+            };
+        case "DELETE_PAYMENT_RESULT":
+            return {
+                ...state,
+                paymentDeleteResult: action.payment_result
             };
         case "SAVE_PAYMENT_VEIRFY_RESULT":
             return {

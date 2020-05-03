@@ -3,7 +3,6 @@ import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import "../../css/invoiceTemplate.css"
 
 const InvoiceModal = (props) => {
-    console.log("Invoice ", props)
     return <Modal isOpen={props.showModel} toggle={props.toggle} size="lg">
         <ModalHeader toggle={props.toggle}>Invoice no: #{props.data.invoiceId} </ModalHeader>
         <ModalBody>
@@ -17,7 +16,6 @@ const InvoiceModal = (props) => {
 }
 
 const InvoiceHTMLTemplate = (props) => {
-    console.log(props);
     return <div id="invoice-box" className="invoice-box">
         <table cellPadding="0" cellSpacing="0">
             <tr className="top">

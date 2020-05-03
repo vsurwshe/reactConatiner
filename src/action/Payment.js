@@ -32,6 +32,32 @@ export function savePayementData(token, postData) {
     }
 }
 
+export function updatePayementData(token, postData) {
+    var config = {
+        headers: { 'Authorization': 'Bearer ' + token }
+    };
+    return (dispatch) => {
+        return axios.put(API_URL + '/user/' + postData.userId + '/payment/' + postData.paymentId + '/update', postData, config)
+            .then(response => {
+                dispatch(updatePaymentResult(response.data))
+            })
+            .catch(err => { console.log("Error : ", err) })
+    }
+}
+
+export function deletePayementData(token, postData) {
+    var config = {
+        headers: { 'Authorization': 'Bearer ' + token }
+    };
+    return (dispatch) => {
+        return axios.delete(API_URL + '/user/' + postData.userId + '/payment/' + postData.paymentId + '/delete', config)
+            .then(response => {
+                dispatch(savePaymentResult(response.data))
+            })
+            .catch(err => { console.log("Error : ", err) })
+    }
+}
+
 
 export function setPaymentVeirfyValue(token, postData) {
     var config = {
@@ -77,5 +103,10 @@ export function loadMessage(color, message) {
     }
 }
 
-
+export function updatePaymentResult(data) {
+    return {
+        type: "UPDATE_PAYMENT_RESULT",
+        payment_result: data
+    }
+}
 

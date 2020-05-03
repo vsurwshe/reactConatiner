@@ -14,7 +14,6 @@ class MainPage extends Component {
                 <HeaderPart />
             </Row>
             <Row style={{ paddingTop: 20 }}>
-                {console.log(isLogin(this.props))}
                 {!isLogin(this.props) ? <Login /> : <>
                     <Col xl={2}><RoutesConfig /></Col>
                     <Col style={{ width: "70%" }}><RouteSwitch /></Col>
@@ -29,10 +28,10 @@ const RoutesConfig = (props) => {
         <nav className="navbar ">
             <ul className="navbar-nav">
                 {RoutesPath.map((route, index) => {
-                        return <li className="nav-item" key={index}>
-                            <Link className="nav-link" to={route.link}>{route.text}</Link>
-                        </li>
-                    })
+                    return <li className="nav-item" key={index}>
+                        <Link className="nav-link" to={route.link}>{route.text}</Link>
+                    </li>
+                })
                 }
             </ul>
         </nav>

@@ -51,6 +51,7 @@ class PaymentDatatable extends Component {
     // This array collection of header in DataTable
     let columns = [
       { title: '', visible: false },
+      { title: '', visible: false },
       { title: "Sr. no" },
       { title: "Payment Mode" },
       { title: "Payment Date" },
@@ -86,9 +87,10 @@ class PaymentDatatable extends Component {
 
   // Show the Single Bill 
   loadSingleRow = (payment, key) => {
-    const { payId, mode, transctionsId, amount, tarnsDate, verify } = payment
+    const { paymentId, mode, transctionsId, amount, tarnsDate, verify, userId } = payment
     let singleRow = [
-      "" + payId,
+      "" + paymentId,
+      "" + userId,
       "" + (key + 1),
       "" + mode,
       "" + tarnsDate,

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { bindActionCreators} from "redux"
+import { bindActionCreators } from "redux"
 import * as actionsPayment from "../../../action/Payment";
 import * as actionsUser from "../../../action/User";
 import { CardBody, Card, Container, CardHeader } from "reactstrap";
@@ -34,6 +34,22 @@ class PaymentOps extends Component {
         }
     }
 
+    handelEditSubmit = async (event, errors, values) => {
+        if (errors.length === 0) {
+            let newData = { ...values };
+            if (values.version === "") {
+                newData = { ...values, version: 0.0 }
+            }
+            await this.setLoading();
+            await this.props.paymentAct.updatePayementData(this.props.token, newData);
+            setTimeout(async () => {
+                await this.props.paymentAct.loadPayments(this.props.token);
+                await this.setLoading();
+                await this.cancleLoading();
+            }, Config.API_EXE_TIME)
+        }
+    }
+
     cancleLoading = () => {
         this.setState({ cancle: !this.state.cancle })
     }
@@ -50,28 +66,29 @@ class PaymentOps extends Component {
     }
 
     loadPaymentForm = () => {
-    const {loading }= this.state
-    const { users, rowData } = this.props
-    return <Container className="justify-content-md-center" style={{ paddingTop: 30 }}> <Card  >
-        <CardHeader> <b>{(rowData && rowData.length>1) ? "Edit Payment Deatils" : "Add New Payment Deatils"}</b></CardHeader>
-        <CardBody className="card-align">
-            <PaymentForm 
-            users={users} 
-            handelSubmit={this.handelSubmit} 
-            cancleLoading={this.cancleLoading}
-            data={rowData} 
-            />
-            <center>{loading && this.loadSpinner()}</center>
-        </CardBody>
-    </Card>
-    </Container>}
+        const { loading } = this.state
+        const { users, rowData } = this.props
+        return <Container className="justify-content-md-center" style={{ paddingTop: 30 }}> <Card  >
+            <CardHeader> <b>{(rowData && rowData.length > 1) ? "Edit Payment Deatils" : "Add New Payment Deatils"}</b></CardHeader>
+            <CardBody className="card-align">
+                <PaymentForm
+                    users={users}
+                    handelSubmit={(rowData && rowData.length > 1) ? this.handelEditSubmit : this.handelSubmit}
+                    cancleLoading={this.cancleLoading}
+                    data={rowData}
+                />
+                <center>{loading && this.loadSpinner()}</center>
+            </CardBody>
+        </Card>
+        </Container>
+    }
 }
 
 const mapStateToProps = state => { return state; };
-const mapDispatchToProps=(dispatch)=>({
-usersAct : bindActionCreators(actionsUser,dispatch),
-paymentAct : bindActionCreators(actionsPayment,dispatch)
+const mapDispatchToProps = (dispatch) => ({
+    usersAct: bindActionCreators(actionsUser, dispatch),
+    paymentAct: bindActionCreators(actionsPayment, dispatch)
 })
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(PaymentOps);
+export default connect(mapStateToProps, mapDispatchToProps)(PaymentOps);
