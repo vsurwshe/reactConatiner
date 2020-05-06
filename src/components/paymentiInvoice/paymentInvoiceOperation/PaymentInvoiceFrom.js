@@ -6,7 +6,7 @@ import { AvField, AvForm } from "availity-reactstrap-validation";
 import { FormGroup, Row, Col, } from "reactstrap";
 import Loader from 'react-loader-spinner';
 
-const InvoiceForm = (props) => {
+const PaymentInvoiceForm = (props) => {
     (props.invoiceDate && props.invoiceDate.length === 0) && props.getInvoiceDate(props.token)
     const { handelSubmit, invoiceDate, loading } = props
     return <AvForm onSubmit={handelSubmit}>
@@ -31,4 +31,4 @@ const InvoiceForm = (props) => {
 }
 
 const mapStateToProps = state => { return state; };
-export default connect(mapStateToProps, actionsCre)(InvoiceForm);
+export default connect(mapStateToProps, actionsCre)(PaymentInvoiceForm);

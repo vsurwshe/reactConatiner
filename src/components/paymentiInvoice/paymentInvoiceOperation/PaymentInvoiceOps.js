@@ -9,7 +9,7 @@ import Config from '../../../data/Config';
 import PaymentStructure from '../PaymentStructure';
 import PaymentForm from './InvoiceFrom';
 
-class InvoiceOps extends Component {
+class PaymentInvoiceOps extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -73,4 +73,4 @@ usersAct : bindActionCreators(actionsUser,dispatch),
 paymentAct : bindActionCreators(actionsPayment,dispatch)
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)(InvoiceOps);
+export default connect(mapStateToProps,mapDispatchToProps)(PaymentInvoiceOps);

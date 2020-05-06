@@ -2,11 +2,12 @@ import React from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import "../../css/invoiceTemplate.css"
 
-const InvoiceModal = (props) => {
+const PaymentInvoiceModal = (props) => {
+    console.log(props)
     return <Modal isOpen={props.showModel} toggle={props.toggle} size="lg">
-        <ModalHeader toggle={props.toggle}>Invoice no: #{props.data.invoiceId} </ModalHeader>
+        <ModalHeader toggle={props.toggle}>Invoice no: #{props.data && props.data.invoiceId} </ModalHeader>
         <ModalBody>
-            {InvoiceHTMLTemplate(props.data)}
+            {props.data && InvoiceHTMLTemplate(props.data)}
         </ModalBody>
         <ModalFooter>
             <Button color="primary" onClick={() => window.print()}> Print Invoice</Button>
@@ -92,4 +93,4 @@ const InvoiceHTMLTemplate = (props) => {
     </div>
 }
 
-export default InvoiceModal;
+export default PaymentInvoiceModal;

@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import { Button } from 'react-bootstrap';
 import { connect } from "react-redux";
 import * as actionsInvoice from "../../action/Invoice";
-import InvoiceDataTable from "./invoiceTable/InvoiceDataTabel";
-import InvoiceFrom from './invoiceOperation/InvoiceFrom';
+import InvoiceDataTable from "./paymentInvoiceTable/PaymentInvoiceDataTabel";
+import InvoiceFrom from './paymentInvoiceOperation/PaymentInvoiceFrom';
 import Config from '../../data/Config';
 
-class InvoiceStructure extends Component {
+class PaymentInvoiceStructure extends Component {
     constructor(props){
         super(props);
         this.state={
@@ -56,4 +56,4 @@ class InvoiceStructure extends Component {
 }
  
 const mapStateToProps = state => { return state; };
-export default connect(mapStateToProps,actionsInvoice)(InvoiceStructure);
+export default connect(mapStateToProps,actionsInvoice)(PaymentInvoiceStructure);
