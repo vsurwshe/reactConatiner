@@ -5,7 +5,7 @@ import "../../css/invoiceTemplate.css"
 const ProfileInvoiceModal = (props) => {
     console.log(props)
     return <Modal isOpen={props.showModel} toggle={props.toggle} size="lg">
-        <ModalHeader toggle={props.toggle}>Invoice no: #{props.data && props.data.invoiceId} </ModalHeader>
+        <ModalHeader toggle={props.toggle}>Invoice no: #{props.data && props.data.profileInvoiceId} </ModalHeader>
         <ModalBody>
             {props.data && InvoiceHTMLTemplate(props.data)}
         </ModalBody>
@@ -30,9 +30,10 @@ const InvoiceHTMLTemplate = (props) => {
                                     {/* <img src="https://www.sparksuite.com/images/logo.png" style={{ width: "100%", maxWidth: 300 }} /> */}
                                 </td>
                                 <td>
-                                    Invoice #: {props.invoiceId}<br />
-                                    Date: {props.invoiceDate}<br />
+                                    Invoice #: {props.profileInvoiceId}<br />
+                                    Date: {props.profileInvoiceDate}<br />
                                 </td>
+                                <td></td>
                                 <td></td>
                             </tr>
                         </tbody>
@@ -57,12 +58,13 @@ const InvoiceHTMLTemplate = (props) => {
                                     john@example.com
                                 </td>
                                 <td></td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
                 </td>
             </tr>
-            <tr className="heading">
+            {/* <tr className="heading">
                 <td>Payment Method</td>
                 <td></td>
                 <td></td>
@@ -71,28 +73,31 @@ const InvoiceHTMLTemplate = (props) => {
                 <td>{props.payments && props.payments.mode}</td>
                 <td>{props.payments && props.payments.transctionsId}</td>
                 <td></td>
-            </tr>
+            </tr> */}
 
             <tr className="heading">
-                <td>Item</td>
+                <td>Item Name</td>
                 <td>Qty</td>
-                <td>Price</td>
+                <td>Price(Per Unit)</td>
+                <td>Amount</td>
             </tr>
-            {props.invoiceItem && props.invoiceItem.map((item, key) => {
+            {props.profileInvoiceItem && props.profileInvoiceItem.map((item, key) => {
                 return <tr key={key} className="item" >
-                    <td>{item.itemName}</td>
-                    <td>{item.itemQty}</td>
-                    <td>{item.itemPrice}</td></tr>
+                    <td>{item.profileItemName}</td>
+                    <td>{item.profileItemQty}</td>
+                    <td>{item.profileItemPrice}</td>
+                    <td>{item.profileItemSubTotal}</td>
+                    </tr>
             })
             }
             <tr className="total">
                 <td></td>
+                <td></td>
                 <td>Total:</td>
-                <td> ${props.invoiceTotalAmount}</td>
+                <td> ${props.profileInvoiceTotal}</td>
             </tr>
             </tbody>
         </table>
     </div>
 }
-
 export default ProfileInvoiceModal;

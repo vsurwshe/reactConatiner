@@ -6,7 +6,6 @@ import { bindActionCreators } from "redux";
 import * as actionsPayment from "../../../action/Payment";
 import * as actionsUser from "../../../action/User";
 import PaymentInvoiceModal from './ProfileInvoiceModal';
-import { PaymentInvoiceTable } from '../../paymentiInvoice/paymentInvoiceTable/PaymentInvoiceTabel';
 import { ProfileInvoiceTable } from './ProfileInvoiceTabel';
 
 class ProfileInvoiceDataTable extends Component {
@@ -26,7 +25,8 @@ class ProfileInvoiceDataTable extends Component {
   }
 
   showInvoice=(data)=>{
-    let filterData= this.props.invoices.length >0  && this.props.invoices.filter(invoiceData=> invoiceData.invoiceId=== parseInt(data[2]));
+    console.log(data)
+    let filterData= this.props.profileInvoices.length >0  && this.props.profileInvoices.filter(invoice=> invoice.profileInvoiceId === parseInt(data[0]));
     this.toggle(filterData[0]);
   }
 
