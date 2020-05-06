@@ -45,26 +45,31 @@ export class DataTable extends Component {
             columnDefs: [
                 // Define a button in the datatable
                 {
+                    "targets": 3, // specifies the position of button(last but one) in the row
+                    "data":null,
+                    "render":(data,type,row) => {
+                        return this.props.showUserName(row[3]);
+                    },
+                },
+                {
                     "targets": -3, // specifies the position of button(last but one) in the row
                     "data": function (row, type, val, meta) {
-                        return row[7] === "No" ? "<button class='verifyButton' style='background-color: green; border-radius: 0.25em' >Verify</button>" : "Verifed"
+                        return row[8] === "No" ? "<button class='verifyButton' style='background-color: green; border-radius: 0.25em' >Verify</button>" : "Verifed"
                     },
                     "createdCell": (td, cellData, rowData, row, col) => {
                         $(td).click(e => {
                             cellData !== "Verifed" && this.props.handelVerifyClick(rowData)
                         })
                     },
-                    // "defaultContent": "<button class='verifyButton' style='background-color: green; border-radius: 0.25em'>Verify</button>"
                 },
                 {
                     "targets": -2, // specifies the position of button(last but one) in the row
-                    "data": null,
                     "data": function (row, type, val, meta) {
-                        return row[7] === "No" ? "<button class='verifyButton' style='background-color: yellow; border-radius: 0.25em'>Edit</button>" : ""
+                        return row[8] === "No" ? "<button class='verifyButton' style='background-color: yellow; border-radius: 0.25em'>Edit</button>" : ""
                     },
                     "createdCell": (td, cellData, rowData, row, col) => {
                         $(td).click(e => {
-                            rowData[7] === "No" && this.props.handelEditClick(rowData)
+                            rowData[8] === "No" && this.props.handelEditClick(rowData)
                         })
                     },
                     // "defaultContent": "<button class='verifyButton' style='background-color: yellow; border-radius: 0.25em'>Edit</button>"

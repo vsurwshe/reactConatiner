@@ -19,6 +19,7 @@ const PaymentInvoiceModal = (props) => {
 const InvoiceHTMLTemplate = (props) => {
     return <div id="invoice-box" className="invoice-box">
         <table cellPadding="0" cellSpacing="0">
+        <tbody>
             <tr className="top">
                 <td colSpan="3">
                     <table>
@@ -89,6 +90,7 @@ const InvoiceHTMLTemplate = (props) => {
                 <td>Total:</td>
                 <td> ${props.invoiceTotalAmount}</td>
             </tr>
+            </tbody>
         </table>
     </div>
 }

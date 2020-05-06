@@ -41,6 +41,13 @@ export class PaymentInvoiceTable extends Component {
             columnDefs: [
                 // Define a button in the datatable
                 {
+                    "targets": 3, // specifies the position of button(last but one) in the row
+                    "data": null,
+                    "render":(data,type,row)=>{
+                        return this.props && this.props.showUserName(row[3]);  
+                    }
+                },
+                {
                     "targets": -1, // specifies the position of button(last but one) in the row
                     "data": function (row, type, val, meta) {
                         return row[5] !== "null" ? "<button class='verifyButton' style='background-color: green; border-radius: 0.25em' >View Invoice</button>" : "";
