@@ -26,7 +26,7 @@ const PaymentForm = (props) => {
         </Row>
         <Row>
             <Col>
-                <AvField type="select" name="userId" label="Select User" value={userId && userId} errorMessage="Enter vaild user" required >
+                <AvField type="select" name="userId" label="Select User" value={userId && userId} errorMessage="Select vaild user" required >
                     {(props.users && props.users.length > 1) ? props.users.map((user, key) => <option key={key} value={user.userId}>{user.userName}</option>) : <option>No Users Available</option>}
                 </AvField>
             </Col>

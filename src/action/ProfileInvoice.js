@@ -4,7 +4,7 @@ const API_URL = apiUrl;
 
 // ------------------ This is dispath Actions Call any Component
 // 1) Get All invoices
-export function loadInvoices(token) {
+export function loadProfileInvoices(token) {
     return (dispatch) => {
         return axios.get(API_URL + "/user/profileInvoice/getAll", {
             headers: {
@@ -20,7 +20,7 @@ export function loadInvoices(token) {
 
 export function saveProfileInvoices(token,data) {
     return (dispatch) => {
-        return axios.post(API_URL + "/user/"+data.userId+"/profileInvoice/genrate/"+data.invoiceDate, {
+        return axios.post(API_URL + "/user/"+data.userId+"/profileInvoice/genrate/"+data.invoiceDate, null,{
             headers: {
                 'Authorization': 'Bearer ' + token
             }
