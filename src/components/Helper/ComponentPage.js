@@ -119,7 +119,7 @@ export const Desription = () => <div id="description" className="cards-1">
 
 const FeaturesCard = [
     {
-        featureImagePath: "images/features-1.png",
+        featureImagePath: "images/hotelTabel.png",
         featureName: "Tabel Management",
         featureInfo: "You can manage your hotel or restaurant tables easily and simply. You can see the daily which tables are busy and you can reservations those tables for specific customers.",
         featureList: [
@@ -129,7 +129,7 @@ const FeaturesCard = [
         ]
     },
     {
-        featureImagePath: "images/features-2.png",
+        featureImagePath: "images/foodManagment.png",
         featureName: "Foods management",
         featureInfo: "You can manage your hotel or restaurant food management with price and quantity while creating an invoice for the user table. Once you add the food, then you just need to select the food.",
         featureList: [
@@ -139,7 +139,7 @@ const FeaturesCard = [
         ]
     },
     {
-        featureImagePath: "images/features-3.png",
+        featureImagePath: "images/customerManagment.png",
         featureName: "Customer Management",
         featureInfo: "You can manage your hotel or restaurant customer data management with the name and other details while creating an invoice for the user table. Once you add the customer, then you just need to select the customer.",
         featureList: [
@@ -147,9 +147,17 @@ const FeaturesCard = [
             "Select the customer details while creating the user invoice",
             "Modify the customer details easily."
         ]
+    },
+    {
+        featureImagePath: "images/roomManagement.png",
+        featureName: "Room Management",
+        featureInfo: "You can manage your rooms data, using this features",
+        featureList: [
+            "Add the room with customer details.",
+            "You can view the room details with customer details.",
+            "Modify room booking details."
+        ]
     }
-
-
 ]
 
 
@@ -177,6 +185,9 @@ export const Features = () => <div id="features" className="tabs">
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" id="nav-tab-3" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false"><i className="fas fa-chart-bar"></i>Customer Management</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" id="nav-tab-3" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false"><i className="fas fa-chart-bar"></i>Room Management</a>
                     </li>
                 </ul>
                 {/* <!-- end of tabs links --> */}
@@ -221,7 +232,6 @@ export const Features = () => <div id="features" className="tabs">
     </div>
     {/* <!-- end of container --> */}
 </div>
-
 
 
 export const LightBox = () => <div id="details-lightbox-1" className="lightbox-basic zoom-anim-dialog mfp-hide">
@@ -269,7 +279,7 @@ export const LightBox = () => <div id="details-lightbox-1" className="lightbox-b
     {/* <!-- end of container --> */}
 </div>
 
-
+// this compoent showing details of 
 export const Details = () => <div id="details" className="basic-1">
     <div className="container">
         <div className="row">
@@ -294,7 +304,7 @@ export const Details = () => <div id="details" className="basic-1">
             {/* </div><!-- end of col --> */}
             <div className="col-lg-6">
                 <div className="image-container">
-                    <img className="img-fluid" src="images/details.png" alt="alternative" />
+                    <img className="img-fluid" src="images/orderManagement.png" alt="alternative" />
                 </div>
                 {/* <!-- end of image-container --> */}
             </div>

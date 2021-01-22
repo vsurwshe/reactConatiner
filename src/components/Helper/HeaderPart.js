@@ -1,5 +1,5 @@
 import React from 'react';
-const {softwarePath} = window['runConfig'];
+// const {softwarePath} = window['runConfig'];
 
 const HeaderPart=()=><><header id="header" className="header">
 <div className="header-content">
@@ -7,9 +7,9 @@ const HeaderPart=()=><><header id="header" className="header">
         <div className="row">
             <div className="col-lg-6 col-xl-5">
                 <div className="text-container">
-                    <h1>Hotel Managment Desktop Application</h1>
-                    <p className="p-large">This product encourages the simple and bother free administration of lodging activities and capacities in a financially savvy way, remembering to ease. </p>
-                    <a className="btn-solid-lg page-scroll"  href={softwarePath} download>Download now</a>
+                    <h1>Hotel Management Software</h1>
+                    <p className="p-large">This product encourages the simple and bother free administration of lodging activities and capacities in a financially savvy way, remembering to ease. if you want quick demo please contact us.</p>
+                    <a className="btn-solid-lg page-scroll" rel="noopener noreferrer"  href="http://vany-app-hotel.is-best.net/" target="_blank">Get Start</a>
                 </div> 
                 {/* <!-- end of text-container --> */}
             </div> 
@@ -17,7 +17,7 @@ const HeaderPart=()=><><header id="header" className="header">
             <div className="col-lg-6 col-xl-7">
                 <div className="image-container">
                     <div className="img-wrapper">
-                        <img className="img-fluid" src="images/header-software-app.png" alt="alternative"/>
+                        <img className="img-fluid" src="images/mainDashboard.png" alt="alternative"/>
                     </div> 
                     {/* <!-- end of img-wrapper --> */}
                 </div> 
