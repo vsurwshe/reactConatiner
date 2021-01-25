@@ -1,6 +1,7 @@
 import React from 'react'
 
-export const PreLoder = () => <div className="spinner-wrapper">
+// this will load the spiner
+const PreLoder = () => <div className="spinner-wrapper">
     <div className="spinner">
         <div className="bounce1"></div>
         <div className="bounce2"></div>
@@ -8,7 +9,8 @@ export const PreLoder = () => <div className="spinner-wrapper">
     </div>
 </div>
 
-export const Navigation = () => {
+// this will load the navigations block
+const Navigation = () => {
     return <nav className="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top" style={{ backgroundColor: "#5f4dee" }}>
         <div className="container">
             {/* <!-- Text Logo - Use this if you don't have a graphic logo --> */}
@@ -59,8 +61,8 @@ export const Navigation = () => {
     </nav>
 }
 
-
-export const Desription = () => <div id="description" className="cards-1">
+// this will load the description block
+const Desription = () => <div id="description" className="cards-1">
     <div className="container">
         <div className="row">
             <div className="col-lg-12">
@@ -117,51 +119,10 @@ export const Desription = () => <div id="description" className="cards-1">
     {/* <!-- end of container --> */}
 </div>
 
-const FeaturesCard = [
-    {
-        featureImagePath: "images/hotelTabel.png",
-        featureName: "Tabel Management",
-        featureInfo: "You can manage your hotel or restaurant tables easily and simply. You can see the daily which tables are busy and you can reservations those tables for specific customers.",
-        featureList: [
-            "Manage the tables and their bills.",
-            "Reversions of customer tables.",
-            "A daily report generation of the tables."
-        ]
-    },
-    {
-        featureImagePath: "images/foodManagment.png",
-        featureName: "Foods management",
-        featureInfo: "You can manage your hotel or restaurant food management with price and quantity while creating an invoice for the user table. Once you add the food, then you just need to select the food.",
-        featureList: [
-            "Add the food item easily with user understandable GUI",
-            "Modify the infomations easily",
-            "One click add the food informations"
-        ]
-    },
-    {
-        featureImagePath: "images/customerManagment.png",
-        featureName: "Customer Management",
-        featureInfo: "You can manage your hotel or restaurant customer data management with the name and other details while creating an invoice for the user table. Once you add the customer, then you just need to select the customer.",
-        featureList: [
-            "Add the Customer with simple GUI Application",
-            "Select the customer details while creating the user invoice",
-            "Modify the customer details easily."
-        ]
-    },
-    {
-        featureImagePath: "images/roomManagement.png",
-        featureName: "Room Management",
-        featureInfo: "You can manage your rooms data, using this features",
-        featureList: [
-            "Add the room with customer details.",
-            "You can view the room details with customer details.",
-            "Modify room booking details."
-        ]
-    }
-]
-
-
-export const Features = () => <div id="features" className="tabs">
+// this will load features block
+const Features = (props) => {
+    const { featuers }=props
+    return <div id="features" className="tabs">
     <div className="container">
         <div className="row">
             <div className="col-lg-12">
@@ -169,72 +130,59 @@ export const Features = () => <div id="features" className="tabs">
                 <h2 className="h2-heading">Hotel Management Desktop Application</h2>
                 <p className="p-heading">Take your business strategy and The most important functions include front-desk operations, reservations, channel management, housekeeping, rate and occupancy management, and payment processing.</p>
             </div>
-            {/* <!-- end of col --> */}
         </div>
-        {/* <!-- end of row --> */}
         <div className="row">
             <div className="col-lg-12">
-
-                {/* <!-- Tabs Links --> */}
-                <ul className="nav nav-tabs" id="argoTabs" role="tablist">
-                    <li className="nav-item">
-                        <a className="nav-link active" id="nav-tab-1" data-toggle="tab" href="#tab-0" role="tab" aria-controls="tab-0" aria-selected="true"><i className="fas fa-list"></i>Tabel Management</a>
+            {/* <!-- Tabs Links --> */}
+            <ul className="nav nav-tabs" id="argoTabs" role="tablist">
+                {(featuers && featuers.length >0) && featuers.map((item,key)=>{
+                    return <li className="nav-item" key={key}>
+                        <a className={key=== 0 ? "nav-link active":"nav-link"} id={"nav-tab-"+key} data-toggle="tab" href={"#tab-"+key} role="tab" aria-controls={"tab-"+key} aria-selected={key=== 0 ? "true":"false"}><i className="fas fa-list"></i>{item.featureName}</a>
                     </li>
-                    <li className="nav-item">
-                        <a className="nav-link" id="nav-tab-2" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="false"><i className="fas fa-envelope-open-text"></i>Foods management</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" id="nav-tab-3" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false"><i className="fas fa-chart-bar"></i>Customer Management</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" id="nav-tab-3" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false"><i className="fas fa-chart-bar"></i>Room Management</a>
-                    </li>
-                </ul>
-                {/* <!-- end of tabs links --> */}
-                {/* <!-- Tabs Content --> */}
-                <div className="tab-content" id="argoTabsContent">
-                    {
-                        FeaturesCard.length >= 0 && FeaturesCard.map((feature, key) => {
-                            return <div className={key === 0 ? "tab-pane fade show active" : "tab-pane fade"} id={"tab-" + key} role="tabpanel" aria-labelledby={"tab-" + key} key={key}>
-                                <div className="row">
-                                    <div className="col-lg-6">
-                                        <div className="image-container">
-                                            <img className="img-fluid" src={feature.featureImagePath} alt="alternative" />
-                                        </div>
-                                        {/* <!-- end of image-container --> */}
+                })}
+            </ul>
+            {/* {This are the tabs laoding accroding to api} */}
+            <div className="tab-content" id="argoTabsContent">
+                {(featuers && featuers.length >= 0) && featuers.map((feature, key) => {
+                        return <div className={key === 0 ? "tab-pane fade show active" : "tab-pane fade"} id={"tab-" + key} role="tabpanel" aria-labelledby={"tab-" + key} key={key}>
+                            <div className="row">
+                                <div className="col-lg-6">
+                                    <div className="image-container">
+                                        <img className="img-fluid" src={feature.featureImagePath} alt="alternative" />
                                     </div>
-                                    {/* <!-- end of col --> */}
-                                    <div className="col-lg-6">
-                                        <div className="text-container">
-                                            <h3>{feature.featureName}</h3>
-                                            <p>{feature.featureInfo}</p>
-                                            <ul className="list-unstyled li-space-lg">
-                                                {feature.featureList.length > 0 && feature.featureList.map((subFeatuer, key) => {
-                                                    return <li className="media" key={key}> <i className="fas fa-square"></i><div className="media-body" key={key}>{subFeatuer}</div> </li>
-                                                })}
-                                            </ul>
-                                        </div>
-                                        {/* <!-- end of text-container --> */}
-                                    </div>
-                                    {/* <!-- end of col --> */}
+                                    {/* <!-- end of image-container --> */}
                                 </div>
-                                {/* <!-- end of row --> */}
+                                {/* <!-- end of col --> */}
+                                <div className="col-lg-6">
+                                    <div className="text-container">
+                                        <h3>{feature.featureName}</h3>
+                                        <p>{feature.featureInfo}</p>
+                                        <ol className="li-space-lg" style={{listStyleType:"dec"}}>
+                                            {feature.featureList.length > 0 && feature.featureList.map((subFeatuer, key) => {
+                                                return <li className="media" key={key}>
+                                                     <i className="fas fa-square"></i>
+                                                     <div className="media-body" key={key}>{subFeatuer}</div> 
+                                            </li>
+                                            })}
+                                        </ol>
+                                    </div>
+                                    {/* <!-- end of text-container --> */}
+                                </div>
+                                {/* <!-- end of col --> */}
                             </div>
-                        })
-                    }
-                </div>
-                {/* <!-- end of tab content -->
-            <!-- end of tabs content --> */}
+                            {/* <!-- end of row --> */}
+                        </div>
+                    })
+                }
             </div>
-            {/* <!-- end of col --> */}
+            </div>
         </div>
-        {/* <!-- end of row --> */}
     </div>
-    {/* <!-- end of container --> */}
 </div>
+}
 
-
-export const LightBox = () => <div id="details-lightbox-1" className="lightbox-basic zoom-anim-dialog mfp-hide">
+// this will load the light box
+const LightBox = () => <div id="details-lightbox-1" className="lightbox-basic zoom-anim-dialog mfp-hide">
     <div className="container">
         <div className="row">
             <button title="Close (Esc)" type="button" className="mfp-close x-button">×</button>
@@ -280,7 +228,7 @@ export const LightBox = () => <div id="details-lightbox-1" className="lightbox-b
 </div>
 
 // this compoent showing details of 
-export const Details = () => <div id="details" className="basic-1">
+const Details = () => <div id="details" className="basic-1">
     <div className="container">
         <div className="row">
             <div className="col-lg-6">
@@ -314,3 +262,12 @@ export const Details = () => <div id="details" className="basic-1">
     </div>
     {/* <!-- end of container --> */}
 </div>
+
+export{
+    PreLoder,
+    Navigation,
+    Desription,
+    Features,
+    LightBox,
+    Details   
+}

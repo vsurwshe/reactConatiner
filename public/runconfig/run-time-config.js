@@ -1,4 +1,4 @@
 window['runConfig'] = {
-    apiUrl: 'http://10.10.10.15:7000/',
+    apiUrl: 'http://localhost:8007/api/',
     softwarePath:'./software/CloudHotelApp.zip'
 }
